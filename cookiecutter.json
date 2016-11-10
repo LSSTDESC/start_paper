@@ -1,0 +1,8 @@
+{
+    "first_author": "First Last",
+    "serial_number": "0000",
+    "title": "Paper Title",
+    "short_title": "A single, short string to label your paper with (e.g. twinkles-design)",
+    "folder_name": "{{ cookiecutter.serial_number }}-{{ cookiecutter.short_title.lower() }}",
+    "description": "A one-sentence description of your paper, for the folder's README."
+}
