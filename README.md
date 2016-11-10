@@ -20,13 +20,13 @@ cookiecutter https://github.com/DarkEnergyScienceCollaboration/start_paper.git
 ```
 This will ask you some questions. Here's an example session:
 ```
-first_author [First Last]: Phil Marshall
+authors [First Author, Second Author, Another Author]: Phil Marshall, Jonathan Sick, Seth Digel
 title [The Title of This Paper]: Twinkles I: A Tiny Sky Survey
-description [A very brief description of your paper, for the folder's README. (Once you've 
-  typed this, you'll be asked for two more items: a short_title and a serial_number, that 
-  will be used to set the paper's folder name. The serial number can be changed later, so 
-  choosing 0000 is fine.)]: A short paper describing the Twinkles 1 project, including the 
-  design of the survey and the generation of the data, and presenting our results. To be 
+description [A very brief description of your paper, for the folder's README. (Once you've
+  typed this, you'll be asked for two more items: a short_title and a serial_number, that
+  will be used to set the paper's folder name. The serial number can be changed later, so
+  choosing 0000 is fine.)]: A short paper describing the Twinkles 1 project, including the
+  design of the survey and the generation of the data, and presenting our results. To be
   submitted to the AJ.
 short_title [paper_title]: twinkles-paper-1
 serial_number [0000]: 0001
