@@ -2,17 +2,52 @@
   :name: header
   :target: ./_static/header.png
   :align: center
-  
-===============================================
-LSST DESC Notes Template and Author Guidelines
-===============================================
+
+========================================================================
+{{ cookiecutter.title }}
+========================================================================
+
+* {{ cookiecutter.authors }} *
+
+{{ cookiecutter.description }}
+
+.. |date| date::
+This Note was generated on: |date|
+
+
+Introduction
+============
+
+Write your introduction here!
+
+Method
+======
+
+Write about your methods here! Or change the sections to whatever you want!
+
+Results
+=======
+
+Write about your results here! Or don't!
+
+Conclusions
+===========
+
+Write about your conclusions here. You have drawn some, right?
+
+
+
+
+========================================================
+Appendix: LSST DESC Notes Template and Author Guidelines
+========================================================
 
 *Heather Kelly (SLAC), Phil Marshall (SLAC)*
 
-LSST DESC Notes are designed to be citeable, and so need to conform to the expectations of the academic research community to some 
-extent. They should contain a short abstract, which should be placed here. In this Note we outline the steps for starting a new 
-LSST DESC Note, getting it reviewed within the collaboration, and then "publishing" it (not in a journal, but on the web nonetheless). 
-We then provide a quick introduction to preparing Notes in restructuredtext, highlighting aspects of LSST DESC Note style, and 
+LSST DESC Notes are designed to be citeable, and so need to conform to the expectations of the academic research community to some
+extent. They should contain a short abstract, which should be placed here. In this Note we outline the steps for starting a new
+LSST DESC Note, getting it reviewed within the collaboration, and then "publishing" it (not in a journal, but on the web nonetheless).
+We then provide a quick introduction to preparing Notes in restructuredtext, highlighting aspects of LSST DESC Note style, and
 giving some pointers to good resources.
 
 .. |date| date::
@@ -25,7 +60,7 @@ This is a template restructuredtext LSST DESC Note, for you to adapt for your ow
 
 Getting Started
 ===============
-* Fork the GitHub repository of your project if you haven't already. 
+* Fork the GitHub repository of your project if you haven't already.
 * Under the ``doc/LSST_DESC_Notes`` directory (which you might have to create), make a new subdirectory with a suitable name to contain your LSST DESC Note. This name needs to be unique to this repository, but need not contain the name of the repository.
 * Copy the `Computing Infrastructure LSST DESC Note template <https://github.com/DarkEnergyScienceCollaboration/ComputingInfrastructure/blob/master/doc/LSST_DESC_Notes/template_LSST_DESC_Note.rst>`_ (i.e. this file) into your new directory, and rename it ``index.rst``.
 * Edit your new ``index.rst`` file with the contents of your Note, following the guidelines in the template.
@@ -33,7 +68,7 @@ Getting Started
 * When your Note is complete and ready for review, submit a Pull Request to the base repo and ask your project's leads and/or your working group's conveners to review it.
 * The project leads will review your Note, iterate with you on modifications to it via the comments on the Pull Request, and finally merge it into the repository to signify that the Note is accepted. They will then tag the repo, to mark the first version of this LSST DESC Note.
 
-Sectioning 
+Sectioning
 ==========
 As you can see above, your content can easily be divided into sections. You can also make subsections, as follows.
 
@@ -99,15 +134,15 @@ And then the text continues. Note that GitHub ignores the image sizing commands 
 
 References
 ==========
-You can cite papers (or anything else) by providing hyperlinks. For example, you might have been impressed by the DESC White Paper `(LSST Dark Energy Science Collaboration 2012) <http://arxiv.org/abs/1211.0310>`_.  It should be possible to convert these links to latex citations automatically later. 
+You can cite papers (or anything else) by providing hyperlinks. For example, you might have been impressed by the DESC White Paper `(LSST Dark Energy Science Collaboration 2012) <http://arxiv.org/abs/1211.0310>`_.  It should be possible to convert these links to latex citations automatically later.
 
 
 Further Resources
 =================
 
-LSST DESC notes are styled after LSST technotes `(Sick 2016) <https://sqr-000.lsst.io/>`_. You can also `view the restructured text 
-of (Sick 2016) <https://github.com/lsst-sqre/sqr-000/blob/master/index.rst>`_. 
-Another nice example of an LSST technote is `(Wood-Vasey 2016) <http://dmtn-008.lsst.io/>`_ - again, the restructured text is 
+LSST DESC notes are styled after LSST technotes `(Sick 2016) <https://sqr-000.lsst.io/>`_. You can also `view the restructured text
+of (Sick 2016) <https://github.com/lsst-sqre/sqr-000/blob/master/index.rst>`_.
+Another nice example of an LSST technote is `(Wood-Vasey 2016) <http://dmtn-008.lsst.io/>`_ - again, the restructured text is
 visible `here <https://github.com/lsst-dm/dmtn-008/blob/master/index.rst>`_.
-  
+
 For a guide to reStructuredText writing, please see the `LSST docs reST styleguide <http://docs.lsst.codes/en/latest/development/docs/rst_styleguide.html>`_. There are many other reST resources on the web, such as `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.
