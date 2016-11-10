@@ -2,10 +2,10 @@
 ## {{ cookiecutter.folder_name }}
 # {{ cookiecutter.title }}
 
+* {{ cookiecutter.authors }} *
+
 {{ cookiecutter.description }}
 
-Authors:
-* {{ cookiecutter.first_author }}
 
 ## Editing this Paper
 
