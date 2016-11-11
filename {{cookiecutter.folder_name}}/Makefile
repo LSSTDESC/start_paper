@@ -16,12 +16,13 @@ main=main
 outname=paper
 
 # LATEX environment variables
-export TEXINPUTS:=.:./texmf//:./tex:./tex/texmf//:
-export BSTINPUTS:=.:./texmf/bib/:./tex:./tex/texmf/bib/:
+export TEXINPUTS:=.:./texmf/styles/:
+export BSTINPUTS:=.:./texmf/bib/:
 
 # Document class switcher flags
 aastex=\def\flag{aastex}
 revtex=\def\flag{revtex}
+mnras=\def\flag{mnras}
 
 # Submission flags
 arxiv=\def\flag{emulateapj}
@@ -35,11 +36,11 @@ figdir=./figures
 figures=$(figdir)/*.pdf
 tabdir=./tables
 tables=$(tabdir)/*.tex
-stydir=./texmf
-styles=$(stydir)/styles/*.{sty,cls}
+styles=./texmf/styles/*.{sty,cls}
+bibs=./texmf/bib/*.bst
 source=$(main).{tex,bbl,bib} macros.tex authors.tex acknowledgments.tex
 
-tarfiles=$(figures) $(tables) $(styles) $(source)
+tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 
 all: export flag = ${draft}
 all: main copy
@@ -54,7 +55,6 @@ touch:
 TARGETS=aastex note
 $(TARGETS): export flag = \def\flag{$(@)}
 $(TARGETS): 
-	$(MAKE) -e authlist
 	$(MAKE) -e main
 	$(MAKE) -e tar
 
@@ -76,4 +76,3 @@ clean:
 	rm -f *.log *.aux *.out *.dvi *.synctex.gz *.fdb_latexmk *.fls
 	rm -f *.bbl *.blg *Notes.bib
 	rm -f ${main}.pdf ${main}.tar.gz
-
