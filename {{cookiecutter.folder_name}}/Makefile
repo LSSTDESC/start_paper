@@ -59,7 +59,11 @@ $(TARGETS):
 	$(MAKE) -e tar
 
 main : 
-	latexmk -pdf -pdflatex='pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"' ${main}
+	# {% raw %}
+	latexmk -pdf  \
+	-pdflatex='pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
+	${main}
+	# {% endraw %}
 
 tar : main
 	mkdir -p ${tardir}
