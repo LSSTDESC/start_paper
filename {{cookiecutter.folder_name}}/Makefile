@@ -6,10 +6,14 @@
 #
 # To tar up a flat version of a specific format:
 # > make <format> tar
+#
+# Alex Drlica-Wagner <kadrlica@fnal.gov>
+#
 
 # Primary file names
 main=main
-filename=${ {{ cookiecutter.folder_name }} }
+#filename={{ cookiecutter.folder_name }}
+outname=paper
 
 # LATEX environment variables
 export TEXINPUTS:=.:./texmf//:./tex:./tex/texmf//:
@@ -27,41 +31,45 @@ draft=${aastex}
 
 # Files to copy when making tarball
 tardir=tmp
-figdir=../figs
-figures=
-source=$(filename)_apjl.tex 
+figdir=./figures
+figures=$(figdir)/*.pdf
+tabdir=./tables
+tables=$(tabdir)/*.tex
+stydir=./texmf
+styles=$(stydir)/styles/*.{sty,cls}
+source=$(main).{tex,bbl,bib} macros.tex authors.tex acknowledgments.tex
 
-tarfiles=$(figures) $(source)
+tarfiles=$(figures) $(tables) $(styles) $(source)
 
 all: export flag = ${draft}
 all: main copy
 
 copy: 
-	cp $(filename).pdf $(out).pdf
+	cp ${main}.pdf ${outname}.pdf
 
 touch:
-	touch ${filename}.tex
+	touch ${main}.tex
 
 # http://stackoverflow.com/q/8028314/
 TARGETS=aastex note
 $(TARGETS): export flag = \def\flag{$(@)}
 $(TARGETS): 
+	$(MAKE) -e authlist
 	$(MAKE) -e main
 	$(MAKE) -e tar
 
 main : 
-	pdflatex "${flag}\input{${main}}"
-	bibtex ${filename}||true
-	pdflatex "${flag}\input{${main}}"
-	pdflatex "${flag}\input{${main}}"
+	latexmk -pdf -pdflatex='pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"' ${main}
 
 tar : main
-	mkdir -p $(tardir)
-	cp $(tarfiles) $(tardir)	
-	cp $(filename).pdf $(tardir)/$(out).pdf
-	cd $(tardir) && tar -czf ../$(out).tar.gz . && cd ..
-	rm -rf $(tardir)
+	mkdir -p ${tardir}
+	cp ${tarfiles} ${tardir}
+	cp ${main}.pdf ${tardir}/${outname}.pdf
+	cd ${tardir} && tar -czf ../${outname}.tar.gz . && cd ..
+	rm -rf ${tardir}
 
 clean:
-	rm -f *.ps ${filename}.pdf *.log *.aux *.out *.dvi *.bbl *.blg *Notes.bib *.synctex.gz *.fdb_latexmk *.fls
+	rm -f *.log *.aux *.out *.dvi *.synctex.gz *.fdb_latexmk *.fls
+	rm -f *.bbl *.blg *Notes.bib
+	rm -f ${main}.pdf ${main}.tar.gz
 
