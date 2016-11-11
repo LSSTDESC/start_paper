@@ -40,6 +40,9 @@ Don't forget to `git add` and `git commit` the files you edit, in the usual way.
 ## Licence, credits etc
 
 People developing this project:
-* Phil Marshall [(@drphilmarshall)](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues/new?body=@drphilmarshall)
+* Phil Marshall [(@drphilmarshall)](https://github.com/drphilmarshall)
+* Alex Drlica-Wagner [(@kadrlica)](https://github.com/kadrlica)
+* Heather Kelly [(@heather999)](https://github.com/heather999)
+* Jonathan Sick [(@jonathansick)](https://github.com/jonathansick)
 
 This is open source software, available under the BSD license. If you are interested in this project, please do drop us a line via the hyperlinked contact names above, or by [writing us an issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues?q=).
