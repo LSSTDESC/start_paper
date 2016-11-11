@@ -1,3 +1,4 @@
+% {% raw %}
 % mnras.cls
 %
 % MNRAS journal document class file
@@ -1807,3 +1808,4 @@ has been typeset from a \TeX/\LaTeX\ file prepared by the author.}
 %         Numerous small tweaks and improvements following testing
 
 % end of mnras.cls
+% {% endraw %}

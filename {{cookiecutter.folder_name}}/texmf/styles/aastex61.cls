@@ -1,3 +1,4 @@
+%% {% raw %}
 %% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% AASTeX61.cls                                  %%
@@ -6396,7 +6397,7 @@ Deleted recent definition of \appendix, returned to earlier version
 with additions.
 
 ================
-
+%% {% endraw %}
 
 
 
