@@ -1,19 +1,26 @@
 % {% raw %}
-\documentclass[preprint]{aastex}
+\documentclass[]{emulateapj}
 
 \input{macros}
 
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
 \bibliographystyle{apj}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start the Document %%
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document} 
 
-\title{Start Paper Example}
+\title{LSST DESC Paper and Note Template}
 \input{authors}
 
 \begin{abstract}
 
 This is going to be a fantastic paper!
-\keywords{awesome: paper}
+\keywords{latex: templates, papers: awesome}
 
 \end{abstract}
 
@@ -22,29 +29,31 @@ This is going to be a fantastic paper!
 \section{Introduction}
 \label{sec:intro}
 
-This is a paper and note template for the LSST DESC \citep{Overview,ScienceBook,WhitePaper}. 
+This is a paper and note template for the LSST DESC \citep{Overview,ScienceBook,WhitePaper}.  Eventually it will be possible to switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals templates. The base switch is between \code{aastex} and \code{revtex}; however, facilities are also provided for \code{emulateapj} and \code{mnras}.\footnote{The \code{mnras} interface is terrible and largely untested.}  There are some pretty anoying oddities when changing between templates, so please be patient while we try to work these out. 
+
 
 \section{Data Set}
 \label{sec:data}
 
-%There is an example figure shown in \figref{example}.
+There are a number of useful \LaTeX\xspace commands predefined in \code{macros.tex}.
+Notice that the section labels are prefixed with \code{sec:} to allow the use of the \verb=\secref= command to reference a section (\ie, \secref{intro}).
+Figures can be referenced with the \verb=\figref= command, which assumes that the figure label is prefixed with \code{fig:}.
+In \figref{example} we show an example figure.
+You'll notice that the actual figure file is found in the \code{figures} directory. However, because we have specified this directory in our \verb=\graphicspath= we do not need to explicitly specify the path to the image. 
 
-%\begin{figure}[hb]
-%\includegraphics[width=\columnwidth]{example.jpg}
-%\caption{An example figure. \label{fig:example}}
-%\end{figure}
+The \code{macros.tex} package also contains some conventional scientific units like \angstrom, \GeV, \Msun, etc. and some editorial tools for highlighting \FIXME{issues}, \CHECK{text to be checked}, \COMMENT{comments}, and \NEW{new additions}.
+
 
 \section{Methods}
 \label{sec:methods}
 
-Again, not much...
+Similar to the figure before, here we have included a table of data from \code{tables/table.tex}.  Notice that again we are able to reference \tabref{example} with the \verb=\tabref= command using the \code{tab:} prefix. Also notice that we haven't needed to specify the full path to the table because in the \code{Makefile} we include \code{./tables} directory in the \code{\$TEXINPUTS} environment variable.
+
+\input{table}
 
 \section{Results}
 \label{sec:results}
 
-%Here is an example table shown in \tabref{example}.
-
-%\input{table}
 
 \section{Discussion}
 \label{sec:discussion}
@@ -54,7 +63,12 @@ And still not much.
 \section{Conclusions}
 \label{sec:conclusions}
 
-In conclusion, not much.
+In conclusion, 
+
+\begin{figure}[h]
+\includegraphics[width=\columnwidth]{example.jpg}
+\caption{An example figure. \label{fig:example}}
+\end{figure}
 
 \input{acknowledgments}
 

@@ -16,7 +16,7 @@ main=main
 outname=paper
 
 # LATEX environment variables
-export TEXINPUTS:=.:./texmf/styles/:
+export TEXINPUTS:=.:./texmf/styles/:./tables/:
 export BSTINPUTS:=.:./texmf/bib/:
 
 # Document class switcher flags
