@@ -12,28 +12,27 @@
 
 # Primary file names
 main=main
-#filename={{ cookiecutter.folder_name }}
-outname=paper
+outname={{ cookiecutter.folder_name }}
 
 # LATEX environment variables
 export TEXINPUTS:=.:./texmf/styles/:./tables/:
 export BSTINPUTS:=.:./texmf/bib/:
 
-# Document class switcher flags
-aastex=\def\flag{aastex}
-revtex=\def\flag{revtex}
-mnras=\def\flag{mnras}
+# Journal class switcher flags
+# apj=\def\flag{apj}
+# apjl=\def
+# mnras=\def\flag{mnras}
+# note=\def\flag{note}
 
-# Submission flags
-arxiv=\def\flag{emulateapj}
-submit=${aastex}
-#draft=${aastex}\def\linenums{\linenumbers}
-draft=${aastex}
+# Submission flags (these need some thought)
+# arxiv=\def\flag{emulateapj}
+# submit=${aastex}
+# draft=\def\linenums{\linenumbers}
 
 # Files to copy when making tarball
 tardir=tmp
 figdir=./figures
-figures=$(figdir)/*.pdf
+figures=$(figdir)/*.{png,jpg,pdf}
 tabdir=./tables
 tables=$(tabdir)/*.tex
 styles=./texmf/styles/*.{sty,cls}
@@ -43,20 +42,13 @@ source=$(main).{tex,bbl,bib} macros.tex authors.tex acknowledgments.tex
 tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 
 all: export flag = ${draft}
-all: main copy
+all: main
 
 copy: 
 	cp ${main}.pdf ${outname}.pdf
 
 touch:
 	touch ${main}.tex
-
-# http://stackoverflow.com/q/8028314/
-TARGETS=apj apjl prd prl mnras note
-$(TARGETS): export flag = \def\flag{$(@)}
-$(TARGETS): 
-	$(MAKE) -e main
-	$(MAKE) -e tar
 
 # {% raw %}
 main : 
@@ -72,7 +64,16 @@ tar : main
 	cd ${tardir} && tar -czf ../${outname}.tar.gz . && cd ..
 	rm -rf ${tardir}
 
-clean:
+# http://stackoverflow.com/q/8028314/
+TARGETS=apj apjl prd prl mnras note
+$(TARGETS): export flag = \def\flag{$(@)}
+$(TARGETS): 
+	$(MAKE) -e main
+	$(MAKE) -e tar
+
+tidy:
 	rm -f *.log *.aux *.out *.dvi *.synctex.gz *.fdb_latexmk *.fls
 	rm -f *.bbl *.blg *Notes.bib
+
+clean: tidy
 	rm -f ${main}.pdf ${main}.tar.gz
