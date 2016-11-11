@@ -35,7 +35,7 @@ You can delete all of this whenever you're ready.
 
 ## Introduction
 
-This is a template `Markdown` LSST DESC Note, for you to adapt for
+This is a template [`Markdown`](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) LSST DESC Note, for you to adapt for
 your own work.
 
 ## Sectioning
@@ -96,11 +96,11 @@ to the `figures` subdirectory in your Note's folder. Here's an example:
 This is the figure caption: above we have the LSST DESC logo, in JPG format.
 
 And then the text continues. Note that GitHub ignores the image sizing
-commands when presenting `Markdown` format documents; Sphinx might not.
+commands when presenting [`Markdown`](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) format documents; Sphinx might not.
 
 ## Tables
 
-Tables can be fiddly in `Markdown`. A good place to start is an online table generator like [this one](http://www.tablesgenerator.com/Markdown_tables). Then, you'll need some patience. For more on table formatting, see the [`Markdown` cheat-sheet](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet#tables).
+Tables can be fiddly in [`Markdown`](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet). A good place to start is an online table generator like [this one](http://www.tablesgenerator.com/Markdown_tables). Then, you'll need some patience. For more on table formatting, see the [`Markdown` cheat-sheet](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet#tables).
 
 |   A   |   B   |      C         |  D  |
 |:-----:|:-----:|:--------------:|:---:|

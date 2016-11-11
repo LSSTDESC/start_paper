@@ -39,7 +39,7 @@ Write about your conclusions here. You have drawn some, right?
 
 
 ========================================================
-Appendix: LSST DESC Notes ``reST`` Reference
+Appendix: LSST DESC Notes ``reStructuredText`` Reference
 ========================================================
 
 You can delete all of this whenever you're ready.
@@ -47,7 +47,7 @@ You can delete all of this whenever you're ready.
 
 Introduction
 ============
-This is a template ``reStructuredText`` LSST DESC Note, for you to adapt for your own work.
+This is a template ```reStructuredText`` <http://docs.lsst.codes/en/latest/development/docs/rst_styleguide.html>`_ LSST DESC Note, for you to adapt for your own work.
 
 
 Sectioning
@@ -112,12 +112,12 @@ To add figures, add the required image file (PNG, SVG or JPG preferred) to the `
 
   This is the figure caption: above we have the LSST DESC logo, in PNG format.
 
-And then the text continues. Note that GitHub ignores the image sizing commands when presenting ``reST`` format documents; sphinx might not.
+And then the text continues. Note that GitHub ignores the image sizing commands when presenting ```reStructuredText`` <http://docs.lsst.codes/en/latest/development/docs/rst_styleguide.html>`_ format documents; sphinx might not.
 
 Tables
 ======
 
-Tables can be fiddly in `reST`. A good place to start is an online table generator like [this one](http://www.tablesgenerator.com/text_tables). Then, you'll need some patience. For more on table formatting, see `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.
+Tables can be fiddly in `reStructuredText`. A good place to start is an online table generator like [this one](http://www.tablesgenerator.com/text_tables). Then, you'll need some patience. For more on table formatting, see `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.
 
 +-------+-------+----------------+-----+
 |   A   |   B   |      C         |  D  |
@@ -143,4 +143,4 @@ of (Sick 2016) <https://github.com/lsst-sqre/sqr-000/blob/master/index.rst>`_.
 Another nice example of an LSST technote is `(Wood-Vasey 2016) <http://dmtn-008.lsst.io/>`_ - again, the restructured text is
 visible `here <https://github.com/lsst-dm/dmtn-008/blob/master/index.rst>`_.
 
-For a guide to ``reStructuredText`` writing, please see the `LSST docs reST styleguide <http://docs.lsst.codes/en/latest/development/docs/rst_styleguide.html>`_. There are many other ``reST`` resources on the web, such as `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.
+For a guide to ``reStructuredText`` writing, please see the `LSST docs reST styleguide <http://docs.lsst.codes/en/latest/development/docs/rst_styleguide.html>`_. There are many other ``reStructuredText`` resources on the web, such as `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.
