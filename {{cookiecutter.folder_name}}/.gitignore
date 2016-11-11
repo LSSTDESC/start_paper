@@ -1,0 +1,14 @@
+### Emacs
+\#*#
+\.#*
+*~
+
+### Latex
+main.pdf
+*.fls
+*.aux
+*.log
+*.fdb_*
+*.out
+*.blg
+*.bbl
