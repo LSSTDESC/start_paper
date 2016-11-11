@@ -5,13 +5,14 @@
 % Class names:
 % revtex
 % aastex
+% emulateapj
 % mnras
 %
 % Journal names:
 % apj (aastex)
+% apjl (emulateapj)
 % prl (revtex)
 % prd (revtex)
-% emulateapj (revtex)
 % mnras (mnras)
 %
 % Alex Drlica-Wagner <kadrlica@fnal.gov>
@@ -68,6 +69,20 @@
     \renewcommand\bibsty{apj}
   }{}
 
+  % Set the values for emulateapj
+  \ifdefstring{#1}{apjl}{
+    \renewcommand\docopts{iop,revtex4-1}
+    \renewcommand\docclass{emulateapj}
+    \renewcommand\docmacros{aas_macros}
+    \renewcommand\doctitle{
+      \input{\authlist}
+      \maketitle
+    }    
+    \renewcommand\hypopts{figure,figure*}
+    \renewcommand\tabletype{deluxetable*}
+    \renewcommand\bibsty{apj}
+  }{}
+
   % Set the values for aastex
   \ifdefstring{#1}{aastex}{
     \renewcommand\docopts{preprint}
@@ -81,7 +96,7 @@
     \renewcommand\bibsty{apj}
   }{}
 
-  % Set the values for apj (this is bad...)
+  % Set the values for apj (this is bad because it duplicates aastex code)
   \ifdefstring{#1}{apj}{
     \renewcommand\docopts{preprint}
     \renewcommand\docclass{aastex}
