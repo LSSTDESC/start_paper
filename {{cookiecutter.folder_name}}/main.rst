@@ -114,6 +114,21 @@ To add figures, add the required image file (PNG, SVG or JPG preferred) to the `
 
 And then the text continues. Note that GitHub ignores the image sizing commands when presenting ``reST`` format documents; sphinx might not.
 
+Tables
+======
+
+Tables can be fiddly in `reST`. A good place to start is an online table generator like [this one](http://www.tablesgenerator.com/text_tables). Then, you'll need some patience. For more on table formatting, see `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.
+
++-------+-------+----------------+-----+
+|   A   |   B   |      C         |  D  |
++-------+-------+----------------+-----+
+| (deg) | (kpc) | ($M_{\odot}$)  |     |
++-------+-------+----------------+-----+
+|  0.4  |  3.4  |  $10^{12.2}$   | R,S |
++-------+-------+----------------+-----+
+|  9.6  |  8.2  |  $10^{10.4}$   |  S  |
++-------+-------+----------------+-----+
+
 
 References
 ==========
