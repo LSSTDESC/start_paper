@@ -52,18 +52,18 @@ touch:
 	touch ${main}.tex
 
 # http://stackoverflow.com/q/8028314/
-TARGETS=aastex note
+TARGETS=apj apjl prd prl mnras note
 $(TARGETS): export flag = \def\flag{$(@)}
 $(TARGETS): 
 	$(MAKE) -e main
 	$(MAKE) -e tar
 
+# {% raw %}
 main : 
-	# {% raw %}
-	latexmk -pdf  \
+	latexmk -g -pdf  \
 	-pdflatex='pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
-	# {% endraw %}
+# {% endraw %}
 
 tar : main
 	mkdir -p ${tardir}
