@@ -78,6 +78,8 @@ tidy:
 clean: tidy
 	rm -f ${main}.pdf ${main}.tar.gz
 
+# Update the tex styles etc:
+
 baseurl=https://raw.githubusercontent.com/DarkEnergyScienceCollaboration/start_paper/master/%7B%7Bcookiecutter.folder_name%7D%7D
 
 UPDATES=\
@@ -97,6 +99,32 @@ texmf/styles/mnras.cls \
 .PHONY: $(UPDATES)
 $(UPDATES):
 	curl -s -S -o $(@) ${baseurl}/$(@)
+	@echo " "
 
 update:
+	@echo "\nOver-writing LaTeX style files with the latest versions: \n"
 	$(MAKE) $(UPDATES)
+
+# Get fresh copies of the templates etc, for reference:
+
+TEMPLATES=\
+Makefile \
+acknowledgments.tex \
+authors.tex \
+macros.tex \
+main.bib \
+main.ipynb \
+main.md \
+main.rst \
+main.tex
+
+.PHONY: $(TEMPLATES) templates
+$(TEMPLATES):
+	curl -s -S -o templates/$(@) ${baseurl}/$(@)
+	@echo " "
+
+templates:
+	@echo "\nDownloading the latest versions of the template files, for reference: \n"
+	@mkdir -p templates
+	$(MAKE) $(TEMPLATES)
+	ls templates/*

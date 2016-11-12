@@ -23,3 +23,18 @@ You can compile latex papers locally with
 ```
 make  [note|apj|apjl|prd|prl|mnras]
 ```
+
+From time to time, the latex style files will be updated: to re-download the latest versions, do
+```
+make update
+```
+This will over-write your folder's copies - but that's OK, as they are not meant to be edited by you!
+The template files (`main.*` etc) are also likely to be updated; to get fresh copies of these files, do
+```
+make templates
+```
+However, since you will have edited at least one of the templates in your folder, `make templates` creates a special `templates` folder for you to refer to. Finally, to get new style or template files that are added to the `start_paper` project, you'll need to first get the latest `Makefile`, and then `make update` and/or `make templates`. The command to obtain the latest `Makefile` is
+```
+make make
+```
+> NB. `make make` will over-write your existing `Makefile`! If you just want to *see* the latest `Makefile`, but not adopt it blindly (perhaps because you have edited the `Makefile` locally), just do `make templates` and read it in the `templates` folder.
