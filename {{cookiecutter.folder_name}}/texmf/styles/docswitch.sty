@@ -31,7 +31,7 @@
     \input{\authlist}
     \date{\today}
     \maketitle
-  }    
+  }
   \providecommand\maketitlepre{}
   \providecommand\maketitlepost{\doctitle}
   \providecommand\dockeys{\keywords}
@@ -43,6 +43,11 @@
   \providecommand\hypopts{all}
   \providecommand\bibsty{apsrev4-1}
   \providecommand\linenums{}
+
+  % Use modified prd for note
+  \ifdefstring{#1}{note}{
+      \renewcommand\docopts{aps,prd,preprint,superscriptaddress,floatfix,nofootinbib}
+  }{}
 
   % Use the defaults for revtex
   \ifdefstring{#1}{revtex}{}{}
@@ -63,7 +68,7 @@
     \renewcommand\doctitle{
       \input{\authlist}
       \maketitle
-    }    
+    }
     \renewcommand\hypopts{figure,figure*}
     \renewcommand\tabletype{deluxetable*}
     \renewcommand\bibsty{apj}
@@ -77,7 +82,7 @@
     \renewcommand\doctitle{
       \input{\authlist}
       \maketitle
-    }    
+    }
     \renewcommand\hypopts{figure,figure*}
     \renewcommand\tabletype{deluxetable*}
     \renewcommand\bibsty{apj}
@@ -91,7 +96,7 @@
     \renewcommand\doctitle{
       \input{\authlist}
       \maketitle
-    }    
+    }
     \renewcommand\tabletype{deluxetable}
     \renewcommand\bibsty{apj}
   }{}
@@ -104,10 +109,10 @@
     \renewcommand\doctitle{
       \input{\authlist}
       \maketitle
-    }    
+    }
     \renewcommand\tabletype{deluxetable}
     \renewcommand\bibsty{apj}
-  }{}    
+  }{}
 
   % Set the values for MNRAS
   \ifdefstring{#1}{mnras}{
