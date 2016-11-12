@@ -33,8 +33,11 @@ The template files (`main.*` etc) are also likely to be updated; to get fresh co
 ```
 make templates
 ```
-However, since you will have edited at least one of the templates in your folder, `make templates` creates a special `templates` folder for you to refer to. Finally, to get new style or template files that are added to the `start_paper` project, you'll need to first get the latest `Makefile`, and then `make update` and/or `make templates`. The command to obtain the latest `Makefile` is
+However, since you will have edited at least one of the templates in your folder, `make templates` creates a special `templates` folder for you to refer to. Finally, to get *new* style or template files that are added to the `start_paper` project, you'll need to first get the latest `Makefile`, and then `make update` and/or `make templates`. The command to obtain the latest `Makefile` is
 ```
-make make
+make new
 ```
-> NB. `make make` will over-write your existing `Makefile`! If you just want to *see* the latest `Makefile`, but not adopt it blindly (perhaps because you have edited the `Makefile` locally), just do `make templates` and read it in the `templates` folder.
+This will add the latest `Makefile` to your `templates` folder. If you want to over-write your existing `Makefile`, you can do
+```
+make upgrade
+``` 

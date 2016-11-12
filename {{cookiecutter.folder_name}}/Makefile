@@ -108,7 +108,6 @@ update:
 # Get fresh copies of the templates etc, for reference:
 
 TEMPLATES=\
-Makefile \
 acknowledgments.tex \
 authors.tex \
 macros.tex \
@@ -127,4 +126,20 @@ templates:
 	@echo "\nDownloading the latest versions of the template files, for reference: \n"
 	@mkdir -p templates
 	$(MAKE) $(TEMPLATES)
+	$(MAKE) this
 	ls templates/*
+
+# Get a template copy of the latest Makefile, for reference:
+.PHONY: new
+new:
+	@echo "\nDownloading the latest version of the Makefile, for reference: \n"
+	@mkdir -p templates
+	curl -s -S -o templates/Makefile ${baseurl}/Makefile
+	@echo " "
+
+# Over-write this Makefile with the latest version:
+.PHONY: upgrade
+upgrade:
+	@echo "\nDownloading the latest version of the Makefile: \n"
+	curl -s -S -o Makefile ${baseurl}/Makefile
+	@echo "\nNow get the latest styles and templates with\n\n    make update\n    make templates\n"
