@@ -1,5 +1,9 @@
 % {% raw %}
 \RequirePackage{docswitch}
+% \flag is set by the user, through the makefile:
+%    make note
+%    make apj
+% etc.
 \setjournal{\flag}
 
 \documentclass[\docopts]{\docclass}
@@ -18,7 +22,7 @@
 %% Start the Document %%
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{document} 
+\begin{document}
 
 \title{LSST DESC Document Template}
 
@@ -36,11 +40,11 @@ This is going to be a fantastic paper!
 \section{Introduction}
 \label{sec:intro}
 
-This is a paper and note template for the LSST DESC \citep{Overview,ScienceBook,WhitePaper}.  
+This is a paper and note template for the LSST DESC \citep{Overview,ScienceBook,WhitePaper}.
 Eventually it will be possible to switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals templates.
-The base switch is between \code{aastex.cls} and \code{revtex.cls}; however, facilities are also provided for \code{emulateapj.cls} and \code{mnras.cls}.\footnote{The \code{mnras.cls} class file is a bit odd...}  
-Documents can be compiled using the provided \code{Makefile} with several options: \code{make apj}, \code{make apjl}, \code{make prd}, and \code{make mnras}. 
-There are some oddities when changing between templates, so please be patient while we try to work these out. 
+The base switch is between \code{aastex.cls} and \code{revtex.cls}; however, facilities are also provided for \code{emulateapj.cls} and \code{mnras.cls}.\footnote{The \code{mnras.cls} class file is a bit odd...}
+Documents can be compiled using the provided \code{Makefile} with several options: \code{make apj}, \code{make apjl}, \code{make prd}, and \code{make mnras}.
+There are some oddities when changing between templates, so please be patient while we try to work these out.
 
 \section{Commands}
 \label{sec:commands}
@@ -49,8 +53,8 @@ There are a number of useful \LaTeX\xspace commands predefined in \code{macros.t
 Notice that the section labels are prefixed with \code{sec:} to allow the use of the \verb=\secref= command to reference a section (\ie, \secref{intro}).
 Figures can be referenced with the \verb=\figref= command, which assumes that the figure label is prefixed with \code{fig:}.
 In \figref{example} we show an example figure.
-You'll notice that the actual figure file is found in the \code{figures} directory. 
-However, because we have specified this directory in our \verb=\graphicspath= we do not need to explicitly specify the path to the image. 
+You'll notice that the actual figure file is found in the \code{figures} directory.
+However, because we have specified this directory in our \verb=\graphicspath= we do not need to explicitly specify the path to the image.
 
 The \code{macros.tex} package also contains some conventional scientific units like \angstrom, \GeV, \Msun, etc. and some editorial tools for highlighting \FIXME{issues}, \CHECK{text to be checked}, \COMMENT{comments}, and \NEW{new additions}.
 
@@ -58,8 +62,8 @@ The \code{macros.tex} package also contains some conventional scientific units l
 \section{Methods}
 \label{sec:methods}
 
-Similar to the figure before, here we have included a table of data from \code{tables/table.tex}.  
-Notice that again we are able to reference \tabref{example} with the \verb=\tabref= command using the \code{tab:} prefix. 
+Similar to the figure before, here we have included a table of data from \code{tables/table.tex}.
+Notice that again we are able to reference \tabref{example} with the \verb=\tabref= command using the \code{tab:} prefix.
 Also notice that we haven't needed to specify the full path to the table because in the \code{Makefile} we include \code{./tables} directory in the \code{\$TEXINPUTS} environment variable.
 
 \input{table}
@@ -67,7 +71,7 @@ Also notice that we haven't needed to specify the full path to the table because
 \section{Results}
 \label{sec:results}
 
-If you are planning on committing your paper to github, it's a good idea to write your tex as one sentence per line. 
+If you are planning on committing your paper to github, it's a good idea to write your tex as one sentence per line.
 This allows for an easier \code{diff} of changes.
 
 \section{Discussion}

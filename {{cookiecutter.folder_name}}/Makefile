@@ -44,14 +44,14 @@ tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 all: export flag = ${draft}
 all: main
 
-copy: 
+copy:
 	cp ${main}.pdf ${outname}.pdf
 
 touch:
 	touch ${main}.tex
 
 # {% raw %}
-main : 
+main :
 	latexmk -g -pdf  \
 	-pdflatex='pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
@@ -67,7 +67,7 @@ tar : main
 # http://stackoverflow.com/q/8028314/
 TARGETS=apj apjl prd prl mnras note
 $(TARGETS): export flag = \def\flag{$(@)}
-$(TARGETS): 
+$(TARGETS):
 	$(MAKE) -e main
 	$(MAKE) -e tar
 
@@ -77,3 +77,26 @@ tidy:
 
 clean: tidy
 	rm -f ${main}.pdf ${main}.tar.gz
+
+baseurl=https://raw.githubusercontent.com/DarkEnergyScienceCollaboration/start_paper/master/%7B%7Bcookiecutter.folder_name%7D%7D
+
+UPDATES=\
+texmf/bib/apj.bst \
+texmf/bib/mnras.bst \
+texmf/styles/aas_macros.sty \
+texmf/styles/aastex.cls \
+texmf/styles/aastex61.cls \
+texmf/styles/aps_macros.sty \
+texmf/styles/docswitch.sty \
+texmf/styles/emulateapj.cls \
+texmf/styles/mnras.cls \
+.logos/desc-logo-small.png \
+.logos/desc-logo.png \
+.logos/header.png
+
+.PHONY: $(UPDATES)
+$(UPDATES):
+	curl -s -S -o $(@) ${baseurl}/$(@)
+
+update:
+	$(MAKE) $(UPDATES)
