@@ -36,7 +36,7 @@ tabdir=./tables
 tables=$(tabdir)/*.tex
 styles=./texmf/styles/*.{sty,cls}
 bibs=./texmf/bib/*.bst
-source=$(main).{tex,bbl,bib} macros.tex authors.tex acknowledgments.tex
+source=$(main).{tex,bbl} references.bib macros.tex authors.tex acknowledgments.tex
 
 tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 
@@ -114,7 +114,7 @@ TEMPLATES=\
 acknowledgments.tex \
 authors.tex \
 macros.tex \
-main.bib \
+references.bib \
 main.ipynb \
 main.md \
 main.rst \
