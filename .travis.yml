@@ -9,7 +9,7 @@ addons:
             - texlive-fonts-recommended
             - texlive-fonts-extra
             - dvipng
-install: make
+install:
 script:
     - make -C doc/0000-start_paper
 after_success: |
