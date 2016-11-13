@@ -3,6 +3,7 @@ before_install:
   - sudo apt-get install -y gsl-bin libgsl0-dev
   - sudo apt-get install latexmk
   - sudo apt-get install latex-xcolor
+  - export OPENOUT_ANY="a"
 addons:
     apt:
         packages:
@@ -14,7 +15,8 @@ addons:
             - texlive-publishers
 install:
 script:
-    - make -C doc/0000-start_paper
+    - cd doc/0000-start_paper
+    - make
 after_success: |
     if [[ -n "$GITHUB_API_KEY" ]; then
         git checkout --orphan pdf
