@@ -14,7 +14,7 @@ addons:
             - texlive-publishers
 install:
 script:
-    - chdir doc/0000-start_paper
+    - cd doc/0000-start_paper
     - make
 after_success: |
     if [[ -n "$GITHUB_API_KEY" ]; then
