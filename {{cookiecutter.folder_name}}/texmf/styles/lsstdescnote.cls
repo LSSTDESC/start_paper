@@ -1953,8 +1953,9 @@ width0pt\relax#1$}\ignorespaces}
 %% for editing changes
 \usepackage[dvipsnames,svgnames]{xcolor}
 % hyperref link defaults to "blue" (0000ff) as this matches our publisher produced pdf style
-\definecolor{xlinkcolor}{cmyk}{1,1,0,0}
-
+% \definecolor{xlinkcolor}{cmyk}{1,1,0,0}
+% LSST DESC presents notes on GitHub, which uses the following color for links:
+\definecolor{xlinkcolor}{rgb}{0.251,0.471,0.753}
 
 %% In response to request from AAS
  \usepackage[bookmarks=false,         % show bookmarks bar?
