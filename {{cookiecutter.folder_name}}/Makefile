@@ -18,11 +18,11 @@ outname={{ cookiecutter.folder_name }}
 export TEXINPUTS:=.:./texmf/styles/:./tables/:
 export BSTINPUTS:=.:./texmf/bib/:
 
-# Journal class switcher flags
+# LaTeX journal class switcher flags
 # apj=\def\flag{apj}
 # apjl=\def
 # mnras=\def\flag{mnras}
-# note=\def\flag{note}
+# tex=\def\flag{tex}
 
 # Submission flags (these need some thought)
 # arxiv=\def\flag{emulateapj}
@@ -65,7 +65,7 @@ tar : main
 	rm -rf ${tardir}
 
 # http://stackoverflow.com/q/8028314/
-TARGETS=apj apjl prd prl mnras   tex
+TARGETS=apj apjl prd prl mnras tex
 $(TARGETS): export flag = \def\flag{$(@)}
 $(TARGETS):
 	$(MAKE) -e main
