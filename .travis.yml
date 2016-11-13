@@ -3,7 +3,6 @@ before_install:
   - sudo apt-get install -y gsl-bin libgsl0-dev
   - sudo apt-get install latexmk
   - sudo apt-get install latex-xcolor
-  - export OPENOUT_ANY="a"
 addons:
     apt:
         packages:
@@ -14,6 +13,7 @@ addons:
             - texlive-fonts-extra
             - texlive-publishers
 install:
+  - sudo echo "openout_any = a" >> `kpsewhere texmf.cnf | uniq`
 script:
     - cd doc/0000-start_paper
     - make
