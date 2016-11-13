@@ -1,4 +1,5 @@
 % {% raw %}
+% ======================================================================
 \RequirePackage{docswitch}
 % \flag is set by the user, through the makefile:
 %    make note
@@ -8,7 +9,7 @@
 
 \documentclass[\docopts]{\docclass}
 
-% You could define the document class directly
+% You could also define the document class directly
 %\documentclass[]{emulateapj}
 
 \input{macros}
@@ -17,36 +18,39 @@
 \graphicspath{{./}{./figures/}}
 \bibliographystyle{apj}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-%% Start the Document %%
-%%%%%%%%%%%%%%%%%%%%%%%%
+% ======================================================================
 
 \begin{document}
 
-\title{LSST DESC Document Template}
+\title{ {{ cookiecutter.title }} }
 
 \maketitlepre
 
 \begin{abstract}
- 
-This is going to be a fantastic paper!
+
+{{ cookiecutter.description }}
 
 \end{abstract}
 
-% Keywords for paper
+% Keywords are ignored in the LSST DESC Note style:
 \dockeys{latex: templates, papers: awesome}
 
 \maketitlepost
+
+% ----------------------------------------------------------------------
 
 \section{Introduction}
 \label{sec:intro}
 
 This is a paper and note template for the LSST DESC \citep{Overview,ScienceBook,WhitePaper}.
-Eventually it will be possible to switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals templates.
-The base switch is between \code{aastex.cls} and \code{revtex.cls}; however, facilities are also provided for \code{emulateapj.cls} and \code{mnras.cls}.\footnote{The \code{mnras.cls} class file is a bit odd...}
+You can delete all this tutorial text whenever you like.
+
+You can easily switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals.
 Documents can be compiled using the provided \code{Makefile} with several options: \code{make apj}, \code{make apjl}, \code{make prd}, and \code{make mnras}.
-There are some oddities when changing between templates, so please be patient while we try to work these out.
+The command \code{make tex} compiles \code{main.tex} using the  \code{lsstdescnote.cls} style.
+
+
+% ----------------------------------------------------------------------
 
 \section{Commands}
 \label{sec:commands}
@@ -61,6 +65,8 @@ However, because we have specified this directory in our \verb=\graphicspath= we
 The \code{macros.tex} package also contains some conventional scientific units like \angstrom, \GeV, \Msun, etc. and some editorial tools for highlighting \FIXME{issues}, \CHECK{text to be checked}, \COMMENT{comments}, and \NEW{new additions}.
 
 
+% ----------------------------------------------------------------------
+
 \section{Methods}
 \label{sec:methods}
 
@@ -70,26 +76,59 @@ Also notice that we haven't needed to specify the full path to the table because
 
 \input{table}
 
+Equations appear as follows, and can be referred to as, for example, \eqnref{example} -- just as for tables, we use the \verb=\eqnref= command using the \code{eqn:} prefix.
+\begin{equation}
+  \label{eqn:example}
+  \langle f(k) \rangle = \frac{ \sum_{t=0}^{N}f(t,k) }{N}
+\end{equation}
+
+
+% ----------------------------------------------------------------------
+
 \section{Results}
 \label{sec:results}
 
-If you are planning on committing your paper to github, it's a good idea to write your tex as one sentence per line.
-This allows for an easier \code{diff} of changes.
+\figref{example} shows an example figure, referred to with the \verb=\figref= command and the \code{fig:} prefix.
+
+\begin{figure}
+\includegraphics[width=0.9\columnwidth]{example.jpg}
+\caption{An example figure. \label{fig:example}}
+\end{figure}
+
+
+% ----------------------------------------------------------------------
 
 \section{Discussion}
 \label{sec:discussion}
 
-And still not much.
+If you are planning on committing your paper to GitHub, it's a good idea to write your tex as one sentence per line.
+This allows for an easier \code{diff} of changes.
+It also makes sense to think of latex as \emph{code}, and sentences as logical statements, occupying one line each.
+Each line must ``compile'' in the mind of the reader.
+
+
+% ----------------------------------------------------------------------
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-In conclusion, there are no conclusions.
+Here's a summary of what we just reported.
 
-\begin{figure}
-\includegraphics[width=\columnwidth]{example.jpg}
-\caption{An example figure. \label{fig:example}}
-\end{figure}
+We can draw the following well-organized and neatly-formatted conclusions:
+\begin{itemize}
+  \item This is important.
+  \item We can measure some number with some precision.
+  \item This has some implications.
+\end{itemize}
+
+Here are some parting thoughts.
+
+
+% ----------------------------------------------------------------------
+
+\subsection*{Acknowledgments}
+
+Here is where you should add your specific acknowledgments, remembering that some standard thanks will be added via the \code{acknowledgments.tex} file.
 
 \input{acknowledgments}
 
@@ -98,4 +137,5 @@ In conclusion, there are no conclusions.
 \bibliography{main}
 
 \end{document}
+% ======================================================================
 % {% endraw %}
