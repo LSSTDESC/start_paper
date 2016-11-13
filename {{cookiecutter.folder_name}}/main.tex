@@ -1,6 +1,10 @@
 % {% raw %}
 % ======================================================================
 \RequirePackage{docswitch}
+% \flag is set by the user, through the makefile:
+%    make note
+%    make apj
+% etc.
 \setjournal{\flag}
 
 \documentclass[\docopts]{\docclass}
@@ -41,10 +45,9 @@
 This is a paper and note template for the LSST DESC \citep{Overview,ScienceBook,WhitePaper}.
 You can delete all this tutorial text whenever you like.
 
-Eventually it will be possible to switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals templates.
-The base switch is between \code{aastex.cls} and \code{revtex.cls}; however, facilities are also provided for \code{emulateapj.cls} and \code{mnras.cls}.\footnote{The \code{mnras.cls} class file is a bit odd...}
+You can easily switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals.
 Documents can be compiled using the provided \code{Makefile} with several options: \code{make apj}, \code{make apjl}, \code{make prd}, and \code{make mnras}.
-There are some oddities when changing between templates, so please be patient while we try to work these out.
+The command \code{make tex} compiles \code{main.tex} using the  \code{lsstdescnote.cls} style.
 
 
 % ----------------------------------------------------------------------
