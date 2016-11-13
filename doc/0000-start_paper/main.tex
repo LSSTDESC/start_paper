@@ -1,4 +1,4 @@
-% {% raw %}
+%
 % ======================================================================
 \RequirePackage{docswitch}
 % \flag is set by the user, through the makefile:
@@ -18,18 +18,18 @@
 \graphicspath{{./}{./figures/}}
 \bibliographystyle{apj}
 
-% {% endraw %}
 % ======================================================================
 
 \begin{document}
 
-\title{ {{ cookiecutter.title }} }
+\title{How to Start Writing an LSST DESC Paper}
 
 \maketitlepre
 
 \begin{abstract}
 
-{{ cookiecutter.description }}
+We describe the \code{start\_paper} project, including the
+cookiecutter mechanism and various paper and LSST DESC Note templates.
 
 \end{abstract}
 
@@ -39,7 +39,6 @@
 \maketitlepost
 
 % ----------------------------------------------------------------------
-% {% raw %}
 
 \section{Introduction}
 \label{sec:intro}
@@ -141,4 +140,4 @@ Here is where you should add your specific acknowledgments, remembering that som
 
 \end{document}
 % ======================================================================
-% {% endraw %}
+%
