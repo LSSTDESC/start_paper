@@ -7,8 +7,7 @@
 # To tar up a flat version of a specific format:
 # > make <format> tar
 #
-# Alex Drlica-Wagner <kadrlica@fnal.gov>
-#
+# Alex Drlica-Wagner: https://github.com/DarkEnergyScienceCollaboration/start_paper/issues/new?body=@kadrlica
 
 # Primary file names
 main=main
@@ -126,7 +125,7 @@ templates:
 	@echo "\nDownloading the latest versions of the template files, for reference: \n"
 	@mkdir -p templates
 	$(MAKE) $(TEMPLATES)
-	$(MAKE) this
+	$(MAKE) new
 	ls templates/*
 
 # Get a template copy of the latest Makefile, for reference:
