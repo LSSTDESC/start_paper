@@ -912,28 +912,43 @@ revtex4-1.cls^^J^^J}\stop
 %  *             KEYWORDS                 *
 %  ****************************************
 
-
-  \def\@keys@name{\textit{Keywords:}\/~\mbox{}}%
+% No keywords in LSST DESC Notes! We use the slot for the date instead:
+%   \def\@keys@name{\textit{Keywords:}\/~\mbox{}}%
+\def\@keys@name{This Note was generated on: \today}%
 
 \newlength{\keys@width}
 \def\frontmatter@keys@format{\ifmodern\vskip0pt\else\vspace*{0.5mm}\fi%
   \settowidth{\keys@width}{\normalsize\@keys@name}%
   \rightskip=0.5in\leftskip=\rightskip\parindent=0pt%
     \hangindent=\keys@width\hangafter=1\normalsize}%
+
 \def\@keywords@produce#1{%
  \showKEYS@sw{%
   \begingroup%
    \frontmatter@keys@format%
-   % \@keys@name#1\par % No keywords in LSST DESC Notes!
+   % No keywords in LSST DESC Notes!
+   % \@keys@name#1\par
+   \@keys@name\par
   \endgroup
  }{%
-  \@if@empty{#1}{}{%
+  % \@if@empty{#1}{}{%
    % \class@warn{If you want your keywords to appear in your output, use document class option showkeys}% No keywords warnings in LSST DESC Notes!
-  }%
+  % }%
+  % LSST DESC Notes uses the keywords space to show the date!
+   \begingroup%
+    \frontmatter@keys@format%
+    % No keywords in LSST DESC Notes!
+    % \@keys@name#1\par
+    \@keys@name\par
+   \endgroup
  }%
 }%
 
 \let\subjectheadings=\keywords
+
+%  ****************************************
+%  *             DATE                     *
+%  ****************************************
 
 
 %  ****************************************
@@ -6245,9 +6260,10 @@ needed. It will not do anything.^^J Please use
 \if@firstsection
   \let\abstract\@undefined\let\endabstract\@undefined
   \titlepage@sw{%
-   \vfil
-   % LSST DESC Notes have first section right after title page material:
+   % LSST DESC Notes have first section right after title page material - well, after a little bit of space:
+   % \vfil
    % \clearpage
+   \vspace{2\baselineskip}
   }{}%
 \fi
 }%
