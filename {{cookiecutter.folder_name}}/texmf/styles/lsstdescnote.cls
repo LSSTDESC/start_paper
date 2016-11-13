@@ -9,7 +9,7 @@
 %% Copyright 2016 American Astronomical Society  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\currversion{6.1}
+\def\currversion{0.1}
 
 %%
 %%    These files are distributed
@@ -919,8 +919,10 @@ revtex4-1.cls^^J^^J}\stop
 \newlength{\keys@width}
 \def\frontmatter@keys@format{\ifmodern\vskip0pt\else\vspace*{0.5mm}\fi%
   \settowidth{\keys@width}{\normalsize\@keys@name}%
-  \rightskip=0.5in\leftskip=\rightskip\parindent=0pt%
-    \hangindent=\keys@width\hangafter=1\normalsize}%
+  % LSST DESC Notes have a centered date statement:
+  % \rightskip=0.5in\leftskip=\rightskip\parindent=0pt%
+  %    \hangindent=\keys@width\hangafter=1\normalsize}%
+  \rightskip=0.0in\leftskip=\rightskip\parindent=0pt}%
 
 \def\@keywords@produce#1{%
  \showKEYS@sw{%
