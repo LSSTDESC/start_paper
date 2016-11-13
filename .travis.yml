@@ -1,6 +1,7 @@
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y gsl-bin libgsl0-dev
+  - sudo apt-get install latexmk
 addons:
     apt:
         packages:
@@ -8,7 +9,6 @@ addons:
             - texlive-latex-extra
             - texlive-fonts-recommended
             - texlive-fonts-extra
-            - dvipng
 install:
 script:
     - make -C doc/0000-start_paper
