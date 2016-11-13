@@ -59,9 +59,9 @@ main :
 
 tar : main
 	mkdir -p ${tardir}
-	cp ${tarfiles} ${tardir}
-	cp ${main}.pdf ${tardir}/${outname}.pdf
-	cd ${tardir} && tar -czf ../${outname}.tar.gz . && cd ..
+	cp ${tarfiles} ${tardir} | true
+	cp ${main}.pdf ${tardir}/${main}.pdf
+	cd ${tardir} && tar -czf ../${main}.tar.gz . && cd ..
 	rm -rf ${tardir}
 
 # http://stackoverflow.com/q/8028314/
