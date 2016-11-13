@@ -9,6 +9,7 @@ addons:
             - texlive-latex-extra
             - texlive-fonts-recommended
             - texlive-fonts-extra
+            - texlive-publishers
 install:
 script:
     - make -C doc/0000-start_paper
