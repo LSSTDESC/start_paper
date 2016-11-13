@@ -94,8 +94,8 @@ Equations appear as follows, and can be referred to as, for example, \eqnref{exa
 \figref{example} shows an example figure, referred to with the \verb=\figref= command and the \code{fig:} prefix.
 
 \begin{figure}
-\includegraphics[width=0.9\columnwidth]{example.jpg}
-\caption{An example figure. \label{fig:example}}
+\includegraphics[width=0.9\columnwidth]{example.png}
+\caption{An example figure: the LSST DESC logo, copied from \code{.logos/desc-logo.png} into \code{figures/example.png}. \label{fig:example}}
 \end{figure}
 
 
@@ -137,7 +137,8 @@ Here is where you should add your specific acknowledgments, remembering that som
 
 %{\it Facilities:} \facility{LSST}
 
-\bibliography{references}
+% Include both collaboration papers and external citations:
+\bibliography{lsstdesc,main}
 
 \end{document}
 % ======================================================================

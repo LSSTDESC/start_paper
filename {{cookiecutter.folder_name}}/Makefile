@@ -15,8 +15,8 @@ main=main
 outname=$(notdir $(shell pwd))
 
 # LATEX environment variables
-export TEXINPUTS:=.:./texmf/styles/:./tables/:
-export BSTINPUTS:=.:./texmf/bib/:
+export TEXINPUTS:=./texmf/styles/:./tables/:
+export BSTINPUTS:=./texmf/bib/:
 
 # LaTeX journal class switcher flags
 # apj=\def\flag{apj}
@@ -36,7 +36,7 @@ tabdir=./tables
 tables=$(tabdir)/*.tex
 styles=./texmf/styles/*.{sty,cls}
 bibs=./texmf/bib/*.bst
-source=$(main).{tex,bbl} references.bib macros.tex authors.tex acknowledgments.tex
+source=$(main).{tex,bbl,bib} lsstdesc.bib macros.tex authors.tex acknowledgments.tex
 
 tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 
@@ -97,7 +97,8 @@ texmf/styles/emulateapj.cls \
 texmf/styles/mnras.cls \
 .logos/desc-logo-small.png \
 .logos/desc-logo.png \
-.logos/header.png
+.logos/header.png \
+lsstdesc.bib
 
 .PHONY: $(UPDATES)
 $(UPDATES):
@@ -114,11 +115,11 @@ TEMPLATES=\
 acknowledgments.tex \
 authors.tex \
 macros.tex \
-references.bib \
 main.ipynb \
 main.md \
 main.rst \
-main.tex
+main.tex \
+main.bib
 
 .PHONY: $(TEMPLATES) templates
 $(TEMPLATES):
