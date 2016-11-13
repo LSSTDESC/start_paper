@@ -44,14 +44,14 @@ tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 all: export flag = ${draft}
 all: main
 
-copy: 
+copy:
 	cp ${main}.pdf ${outname}.pdf
 
 touch:
 	touch ${main}.tex
 
 # {% raw %}
-main : 
+main :
 	latexmk -g -pdf  \
 	-pdflatex='pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
@@ -65,9 +65,9 @@ tar : main
 	rm -rf ${tardir}
 
 # http://stackoverflow.com/q/8028314/
-TARGETS=apj apjl prd prl mnras note
+TARGETS=apj apjl prd prl mnras   tex
 $(TARGETS): export flag = \def\flag{$(@)}
-$(TARGETS): 
+$(TARGETS):
 	$(MAKE) -e main
 	$(MAKE) -e tar
 
