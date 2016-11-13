@@ -13,10 +13,8 @@ addons:
             - texlive-fonts-extra
             - texlive-publishers
 install:
-  - sudo echo "openout_any = a" >> `kpsewhere texmf.cnf | uniq`
 script:
-    - cd doc/0000-start_paper
-    - make
+    - cd doc/0000-start_paper ; make
 after_success: |
     if [[ -n "$GITHUB_API_KEY" ]; then
         git checkout --orphan pdf
