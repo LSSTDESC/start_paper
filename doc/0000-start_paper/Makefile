@@ -17,6 +17,7 @@ outname=$(notdir $(shell pwd))
 # LATEX environment variables
 export TEXINPUTS:=.:./texmf/styles/:./tables/:
 export BSTINPUTS:=.:./texmf/bib/:
+export TMPDIR=.
 
 # LaTeX journal class switcher flags
 # apj=\def\flag{apj}
@@ -76,7 +77,7 @@ $(TARGETS):
 
 tidy:
 	rm -f *.log *.aux *.out *.dvi *.synctex.gz *.fdb_latexmk *.fls
-	rm -f *.bbl *.blg *Notes.bib ${main}.pdf
+	rm -f *.bbl *.blg .bib *Notes.bib ${main}.pdf
 
 clean: tidy
 	rm -f ${outname}.pdf ${outname}.tar.gz
