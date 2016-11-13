@@ -47,10 +47,10 @@
 This is a paper and note template for the LSST DESC \citep{Overview,ScienceBook,WhitePaper}.
 You can delete all this tutorial text whenever you like.
 
-Eventually it will be possible to switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals templates.
-The base switch is between \code{aastex.cls} and \code{revtex.cls}; however, facilities are also provided for \code{emulateapj.cls} and \code{mnras.cls}.\footnote{The \code{mnras.cls} class file is a bit odd...}
-Documents can be compiled using the provided \code{Makefile} with several options: \code{make apj}, \code{make apjl}, \code{make prd}, and \code{make mnras}.
-There are some oddities when changing between templates, so please be patient while we try to work these out.
+You can easily switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals.
+Documents can be compiled using the provided \code{Makefile}.
+The command \code{make} with no arguments compiles \code{main.tex} using the  \code{lsstdescnote.cls} style.
+If you want to upgrade your Note into a journal article, just choose a journal name, between \code{make apj} (ApJ preprint format), \code{make apjl} (which uses the \code{emulateapj} style), \code{make prd}, \code{make prl}, and \code{make mnras}.
 
 
 % ----------------------------------------------------------------------
