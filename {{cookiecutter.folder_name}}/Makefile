@@ -98,7 +98,8 @@ texmf/styles/mnras.cls \
 .logos/desc-logo-small.png \
 .logos/desc-logo.png \
 .logos/header.png \
-lsstdesc.bib
+lsstdesc.bib \
+figures/example.png
 
 .PHONY: $(UPDATES)
 $(UPDATES):
