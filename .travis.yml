@@ -1,15 +1,18 @@
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y gsl-bin libgsl0-dev
+  - sudo apt-get install latexmk
+  - sudo apt-get install latex-xcolor
 addons:
     apt:
         packages:
+            - texlive-generic-recommended
             - texlive-latex-recommended
             - texlive-latex-extra
             - texlive-fonts-recommended
             - texlive-fonts-extra
-            - dvipng
-install: make
+            - texlive-publishers
+install:
 script:
     - make -C doc/0000-start_paper
 after_success: |
