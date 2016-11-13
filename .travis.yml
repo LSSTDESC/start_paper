@@ -14,7 +14,8 @@ addons:
             - texlive-publishers
 install:
 script:
-    - make -C doc/0000-start_paper
+    - chdir doc/0000-start_paper
+    - make
 after_success: |
     if [[ -n "$GITHUB_API_KEY" ]; then
         git checkout --orphan pdf
