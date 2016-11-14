@@ -2,7 +2,7 @@
 ## {{ cookiecutter.folder_name }}
 # {{ cookiecutter.title }}
 
-* {{ cookiecutter.authors }} *
+*{{ cookiecutter.authors }}*
 
 {{ cookiecutter.description }}
 

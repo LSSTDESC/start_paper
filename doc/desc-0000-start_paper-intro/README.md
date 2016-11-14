@@ -2,7 +2,7 @@
 ## desc-0000-start_paper-intro
 # How to Start Writing an LSST DESC Paper
 
-* Phil Marshall, Alex Drlica-Wagner, Heather Kelly, Jonathan Sick *
+*Phil Marshall, Alex Drlica-Wagner, Heather Kelly, Jonathan Sick*
 
 A short paper describing the "start_paper" project, including the cookiecutter mechanism and the various templates.
 
