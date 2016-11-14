@@ -97,6 +97,7 @@ texmf/styles/aps_macros.sty \
 texmf/styles/docswitch.sty \
 texmf/styles/emulateapj.cls \
 texmf/styles/mnras.cls \
+texmf/styles/lsstdescnote.cls \
 .logos/desc-logo-small.png \
 .logos/desc-logo.png \
 .logos/header.png \
