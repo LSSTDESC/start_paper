@@ -52,7 +52,7 @@ touch:
 # {% raw %}
 main :
 	latexmk -g -pdf  \
-	-pdflatex='pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
+	-pdflatex='openout_any=a pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
 # {% endraw %}
 

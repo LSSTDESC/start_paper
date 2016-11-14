@@ -1,4 +1,4 @@
-%% 
+%% {% raw %}
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% lsstdescnote.cls                                  %%
@@ -6386,8 +6386,10 @@ width 0pt\relax\fi}}}
 
 
 %% get rid of \jobname Notes being sent to .aux file:
-\let\bibdata@app\relax
-\def\pre@bibdata{}
+% Commented out to avoid .bib cache creation (we hope): 
+% http://journals.aas.org/authors/aastex/linux.html
+% \let\bibdata@app\relax
+% \def\pre@bibdata{}
 
 \def\frontmatter@author@produce@script{%
   \begingroup
@@ -6463,4 +6465,4 @@ Deleted recent definition of \appendix, returned to earlier version
 with additions.
 
 ================
-%% 
+%% {% endraw %}
