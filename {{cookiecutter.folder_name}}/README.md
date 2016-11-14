@@ -57,4 +57,4 @@ To enable this service, you need to follow these steps:
 3. Set the `GITHUB_API_KEY` environment variable with the value of this token at your repo's [travis settings page](https://travis-ci.org/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/settings).
 4. Copy the `.travis.yml` file in this folder to the top level of your repo (or merge its contents with your existing `.travis.yml` file).
 Edit the final `git push` command with your GitHub username.  
-Commit and push to trigger your travis PDF build.
+Commit and push to trigger your travis build, but note that the PDF will only be deployed if the master branch is updated. 
