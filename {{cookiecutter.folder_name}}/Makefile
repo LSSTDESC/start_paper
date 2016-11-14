@@ -101,6 +101,7 @@ texmf/styles/mnras.cls \
 .logos/desc-logo.png \
 .logos/header.png \
 lsstdesc.bib \
+.travis.yml \
 figures/example.png
 
 .PHONY: $(UPDATES)
