@@ -49,8 +49,6 @@ copy:
 touch:
 	touch ${main}.tex
 
-#http://journals.aas.org/authors/aastex/linux.html
-#change the compiler call to allow a "." file
 # {% raw %}
 main :
 	latexmk -g -pdf  \
@@ -101,7 +99,6 @@ texmf/styles/mnras.cls \
 .logos/desc-logo.png \
 .logos/header.png \
 lsstdesc.bib \
-.travis.yml \
 figures/example.png
 
 .PHONY: $(UPDATES)
