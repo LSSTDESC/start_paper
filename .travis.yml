@@ -16,7 +16,7 @@ install:
 script:
     - cd doc/0000-start_paper ; make
 after_success: |
-    if [[ -n "$GITHUB_API_KEY" ]; then
+    if [ -n "$GITHUB_API_KEY" ]; then
         git checkout --orphan pdf
         git rm -rf .
         cp doc/0000-start_paper.pdf .
