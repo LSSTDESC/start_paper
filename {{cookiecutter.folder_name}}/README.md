@@ -18,11 +18,12 @@ Please use the `figures` folder for your images.
 GitHub is our primary distributor for LSST DESC Notes:
 once the Note has been merged into the project repo's master branch, it will be visible as a *shared* (but not *published*) paper. The presentation of Notes will be improved later, as the LSST DESC Publication System evolves.
 
-Automatically building latex-format Notes or journal articles into PDF files is not yet supported but hopefully will be soon.
 You can compile latex papers locally with
 ```
 make  [note|apj|apjl|prd|prl|mnras]
 ```
+
+## Updating the Styles and Templates
 
 From time to time, the latex style files will be updated: to re-download the latest versions, do
 ```
@@ -40,4 +41,17 @@ make new
 This will add the latest `Makefile` to your `templates` folder. If you want to over-write your existing `Makefile`, you can do
 ```
 make upgrade
-``` 
+```
+
+## Automatic PDF Sharing
+
+The `.travis.yml` file in this folder will cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit. The paper will appear as:
+
+**https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf{{ cookiecutter.folder_name }}.pdf**
+
+To enable this service, you need to follow these steps:
+
+1. Turn on travis continuous integration, by [toggling your repo on your travis profile](https://travis-ci.org/profile). If you don't see your repo listed, you may not have permission to do this: in this case, [contact an admin via the issues](https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/issues/new?body=@DarkEnergyScienceCollaboration/admin).
+2. Get a [GitHub "personal access token"](https://github.com/settings/tokens). Choose the "repo" option.
+3. Set the `GITHUB_API_KEY` environment variable with the value of this token at your repo's [travis settings page](https://travis-ci.org/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/settings).
+4. Copy the `.travis.yml` file in this folder to the top level of your repo (or merge its contents with your existing `.travis.yml` file). Commit and push to trigger your travis PDF build.
