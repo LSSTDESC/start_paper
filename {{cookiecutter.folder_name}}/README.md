@@ -45,7 +45,7 @@ make upgrade
 
 ## Automatic PDF Sharing
 
-The `.travis.yml` file in this folder will cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit. The paper will appear as:
+The `.travis.yml` file in this folder will cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit. The paper should appear as:
 
 **https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf{{ cookiecutter.folder_name }}.pdf**
 
@@ -54,4 +54,6 @@ To enable this service, you need to follow these steps:
 1. Turn on travis continuous integration, by [toggling your repo on your travis profile](https://travis-ci.org/profile). If you don't see your repo listed, you may not have permission to do this: in this case, [contact an admin via the issues](https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/issues/new?body=@DarkEnergyScienceCollaboration/admin).
 2. Get a [GitHub "personal access token"](https://github.com/settings/tokens). Choose the "repo" option.
 3. Set the `GITHUB_API_KEY` environment variable with the value of this token at your repo's [travis settings page](https://travis-ci.org/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/settings).
-4. Copy the `.travis.yml` file in this folder to the top level of your repo (or merge its contents with your existing `.travis.yml` file). Commit and push to trigger your travis PDF build.
+4. Copy the `.travis.yml` file in this folder to the top level of your repo (or merge its contents with your existing `.travis.yml` file).
+Edit the final `git push` command with your GitHub username.  
+Commit and push to trigger your travis PDF build.
