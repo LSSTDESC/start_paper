@@ -112,6 +112,7 @@ $(UPDATES):
 
 update:
 	@echo "\nOver-writing LaTeX style files with the latest versions: \n"
+	@mkdir -p .logos figures texmf/styles texmf/bib
 	$(MAKE) $(UPDATES)
 
 # Get fresh copies of the templates etc, for reference:
