@@ -23,7 +23,7 @@ script:
 # Finally, if it's the master branch being updated, force-push the
 # resulting PDF to an otherwise empty "pdf" branch:
 after_success: |
-    if [[ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]]; then
+    if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
         git checkout --orphan pdf
         git rm -rf .
         git add -f desc-0000-start_paper-intro.pdf
