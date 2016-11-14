@@ -1,3 +1,4 @@
+# Install latex, and the various packages used by the start_paper Makefile:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y gsl-bin libgsl0-dev
@@ -13,9 +14,13 @@ addons:
             - texlive-fonts-extra
             - texlive-publishers
 install:
+
+# Now make the PDF. Note that `make -C` would not work - the PDF product somehow doesn't get saved.
+# Also note how the product is moved to the top level, ready for deployment.
 script:
-    - make -C doc/0000-start_paper
-    - cp doc/0000-start_paper.pdf .
+    - cd doc/0000-start_paper ; make ; cd - ; cp doc/0000-start_paper.pdf .
+
+# Finally, force-push the PDF to an otherwise empty "pdf" branch:
 after_success: |
     if [ -n "$GITHUB_API_KEY" ]; then
         git checkout --orphan pdf
