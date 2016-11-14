@@ -20,8 +20,9 @@ once the Note has been merged into the project repo's master branch, it will be 
 
 You can compile latex papers locally with
 ```
-make  [note|apj|apjl|prd|prl|mnras]
+make  [apj|apjl|prd|prl|mnras]
 ```
+(`make` with no arguments compiles latex in LSST DESC Note style.)
 
 ## Updating the Styles and Templates
 
