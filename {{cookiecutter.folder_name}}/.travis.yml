@@ -15,10 +15,10 @@ addons:
             - texlive-publishers
 install:
 
-# Now make the PDF. Note that `make -C` would not work - the PDF product somehow doesn't get saved.
-# Also note how the product is moved to the top level, ready for deployment.
+# Now make the PDF, and move it to the top level, ready for deployment.
 script:
-    - cd doc/{{ cookiecutter.folder_name }} ; make ; cd - ; cp doc/{{ cookiecutter.folder_name }}.pdf .
+    - make -C doc/{{ cookiecutter.folder_name }}
+    - cp doc/{{ cookiecutter.folder_name }}/{{ cookiecutter.folder_name }}.pdf .
 
 # Finally, force-push the PDF to an otherwise empty "pdf" branch:
 after_success: |

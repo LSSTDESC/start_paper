@@ -15,10 +15,10 @@ addons:
             - texlive-publishers
 install:
 
-# Now make the PDF. Note that `make -C` would not work - the PDF product somehow doesn't get saved.
-# Also note how the product is moved to the top level, ready for deployment.
+# Now make the PDF, and move it to the top level, ready for deployment.
 script:
-    - cd doc/0000-start_paper ; make ; cd - ; cp doc/0000-start_paper.pdf .
+    - make -C doc/0000-start_paper
+    - cp doc/0000-start_paper/0000-start_paper.pdf .
 
 # Finally, force-push the PDF to an otherwise empty "pdf" branch:
 after_success: |
