@@ -49,6 +49,8 @@ copy:
 touch:
 	touch ${main}.tex
 
+#http://journals.aas.org/authors/aastex/linux.html
+#change the compiler call to allow a "." file
 # {% raw %}
 main :
 	latexmk -g -pdf  \
