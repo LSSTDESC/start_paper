@@ -21,7 +21,7 @@ before_script:
 
 # Now make the PDF, and move it to the top level, ready for deployment.
 script:
-  - nosetest -s tests/
+  - nosetests -s tests/
   - make -C doc/desc-0000-start_paper-intro
   - cp doc/desc-0000-start_paper-intro/desc-0000-start_paper-intro.pdf .
 
