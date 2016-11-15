@@ -22,7 +22,7 @@
 
 \newcommand{\setjournal}[1]{
 
-  % Set the default values (PRL):
+  % Set up some default values (PRL) that many styles use:
 
   \providecommand\docopts{aps,prl,reprint,superscriptaddress,
     floatfix,nofootinbib,showkeys,showpacs}
@@ -48,10 +48,23 @@
 
   % Now, make adjustments for different journals:
 
+  % Set the values for lsstdescnote
+  \ifdefstring{#1}{tex}{
+    \renewcommand\docopts{modern}
+    \renewcommand\docclass{lsstdescnote}
+    \renewcommand\docmacros{aas_macros}
+    \renewcommand\doctitle{
+      \input{\authlist}
+      \maketitle
+    }
+    \renewcommand\tabletype{deluxetable}
+    \renewcommand\bibsty{apj}
+  }{}
+
   % Use the defaults for revtex
   \ifdefstring{#1}{revtex}{}{}
 
-  % SUse the defaults for PRL
+  % Use the defaults for PRL
   \ifdefstring{#1}{prl}{}{}
 
   % Set the values for PRD
@@ -123,20 +136,6 @@
     \renewcommand\maketitlepre{\doctitle}
     \renewcommand\maketitlepost{}
   }{}
-
-
-  % Finally:
-
-  % If none of those options was chosen, we must be making an LSST DESC Note! Set the values for lsstdescnote.cls:
-  \renewcommand\docopts{modern}
-  \renewcommand\docclass{lsstdescnote}
-  \renewcommand\docmacros{aas_macros}
-  \renewcommand\doctitle{
-    \input{\authlist}
-    \maketitle
-  }
-  \renewcommand\tabletype{deluxetable}
-  \renewcommand\bibsty{apj}
 
 }
 % {% endraw %}

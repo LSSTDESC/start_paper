@@ -40,7 +40,8 @@ source=$(main).{tex,bbl,bib} lsstdesc.bib macros.tex authors.tex acknowledgments
 
 tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 
-all: export flag = ${draft}
+# Interpret `make` with no target as `make tex`, a latex Note
+all: export flag = \def\flag{tex}
 all: main copy
 
 copy:
@@ -66,10 +67,11 @@ tar : main
 	rm -rf ${tardir}
 
 # http://stackoverflow.com/q/8028314/
-TARGETS=apj apjl prd prl mnras   tex
+TARGETS=apj apjl prd prl mnras tex
 $(TARGETS): export flag = \def\flag{$(@)}
 $(TARGETS):
 	$(MAKE) -e main
+	$(MAKE) -e copy
 	$(MAKE) -e tar
 # NB. the 'tex' target doesn't actually do anything in docswitch - make
 # with no target compiles PDF out of main.tex using lsstdescnote.cls
