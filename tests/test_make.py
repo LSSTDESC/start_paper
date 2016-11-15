@@ -12,12 +12,12 @@ srcdir="./{{cookiecutter.folder_name}}"
 
 commands = [
     ['make'],
-#    ['make','tex'],
-#    ['make','apj'],
-#    ['make','apjl'],
-#    ['make','prl'],
-#    ['make','prd'],
-#    ['make','mnras'],
+    ['make','tex'],
+    ['make','apj'],
+    ['make','apjl'],
+    ['make','prl'],
+    ['make','prd'],
+    ['make','mnras'],
 ]
 
 class TestMake(unittest.TestCase):
