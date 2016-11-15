@@ -5,10 +5,10 @@ Test latex compilation script
 __author__ = "Alex Drlica-Wagner"
 
 import os
-import shutil
-import logging
 from subprocess import Popen, PIPE
 import unittest
+
+srcdir="./{{cookiecutter.folder_name}}"
 
 commands = [
     ['make'],
@@ -23,7 +23,7 @@ commands = [
 class TestMake(unittest.TestCase):
 
     def setUp(self):
-        os.chdir("{{cookiecutter.folder_name}}")
+        os.chdir(srcdir)
 
     def tearDown(self):
         self.runcmd('make clean')
@@ -37,19 +37,21 @@ class TestMake(unittest.TestCase):
         if p.returncode > 0:
             raise Exception(stderr)
 
-# Can't be named 'test' or nose will find it
-def create_func(args):
-    def func(self):
-        if isinstance(args,basestring): self.runcmd(args)
-        else: self.runcmd(' '.join(args))
-    return func
+    @classmethod
+    def create_method(cls, args):
+        def test_method(self):
+            if isinstance(args,basestring): self.runcmd(args)
+            else: self.runcmd(' '.join(args))
+        test_method.__name__ = 'test_%s'%('_'.join(args))
+        return test_method
 
-for args in commands:
-    test_method = create_func(args)
-    test_method.__name__ = 'test_%s' % ('_'.join(args))
-    setattr (TestMake, test_method.__name__, test_method)
-    # Need to delete the method or nose will find it
-    del test_method
+    @classmethod
+    def create_methods(cls, args):
+        for arg in args:
+            test_method = TestMake.create_method(arg)
+            setattr(cls, test_method.__name__, test_method)
+
+TestMake.create_methods(commands)
 
 if __name__ == "__main__":
     unittest.main()
