@@ -16,8 +16,8 @@ addons:
 install:
 
 before_script:
-  - pip install cookiecutter
-  - pip install nose
+  - pip install --user cookiecutter
+  - pip install --user nose
 
 # Now make the PDF, and move it to the top level, ready for deployment.
 script:
