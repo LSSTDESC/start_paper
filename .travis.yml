@@ -33,8 +33,8 @@ script:
 # 1) If it's the master branch being updated, push to a "pdf" branch.
 # 2) If it's a development branch being updated, push to a "drafts"
 # branch named after the dev branch.  
-  - if [ "$TRAVIS_BRANCH" == "master"]; then REMOTEBRANCH="pdf" ; fi
-  - if [ "$TRAVIS_BRANCH" != "master"]; then REMOTEBRANCH="drafts/$TRAVIS_BRANCH" ; fi
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then REMOTEBRANCH="pdf" ; fi
+  - if [ "$TRAVIS_BRANCH" != "master" ]; then REMOTEBRANCH="drafts/$TRAVIS_BRANCH" ; fi
 
 # Finally, deploy the PDF by force-pushing to an otherwise empty orphan
 # branch (ie one with no history). This saves the repo from bloating.
