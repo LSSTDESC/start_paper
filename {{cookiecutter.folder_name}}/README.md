@@ -22,7 +22,7 @@ You can compile latex papers locally with
 ```
 make  [apj|apjl|prd|prl|mnras]
 ```
-`make` with no arguments compiles the latex using the `texmf/styles/lsstdescnote.cls` class, with commands defined in `texmf/styles/lsstdesc_macros.sty`. (`make tex` does the same thing.) Don't edit these style files, as you may want to replace them with newer versions as they become available. Instead, use the `macros.tex` file to add your own `newcommand`'s and `def`'s.
+`make` with no arguments compiles the latex using the `texmf/styles/lsstdescnote.cls` class, with commands defined in `texmf/styles/lsstdesc_macros.sty`. Don't edit these style files, as you may want to replace them with newer versions as they become available. Instead, use the `macros.tex` file to add your own `newcommand`'s and `def`'s.
 
 ## Updating the Styles and Templates
 
