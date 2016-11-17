@@ -29,25 +29,28 @@ script:
   - PAPER="desc-0000-start_paper-intro.pdf"
   - make -C "$FOLDER"
   - cp "$FOLDER"/"$PAPER" .
+# Prepare to deploy final and draft versions:
+  - FINAL="pdf"
+  - DRAFT="drafts/$TRAVIS_BRANCH"
 
 # Finally, deploy the PDF by force-pushing to an otherwise empty orphan
 # branch (ie one with no history). This saves the repo from bloating.
 after_success:
-    - DRAFT="drafts/$TRAVIS_BRANCH"
+    if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 # 1) If it's the master branch being updated, push to a "pdf" branch:
-    - if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
-        git checkout --orphan pdf
+      if [ "$TRAVIS_BRANCH" == "master" ]; then
+        git checkout --orphan "$FINAL"
         git rm -rf .
         git add -f "$PAPER"
         git -c user.name='travis' -c user.email='travis' commit -m init
-        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper pdf
-    - fi
+        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper "$FINAL"
 # 2) If it's a development branch being updated, push to a "drafts"
 # branch named after the dev branch:
-    - if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
-        git checkout --orphan $DRAFT
+      else
+        git checkout --orphan "$DRAFT"
         git rm -rf .
         git add -f "$PAPER"
         git -c user.name='travis' -c user.email='travis' commit -m init
-        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper $DRAFT
-    - fi
+        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper "$DRAFT"
+      fi
+    fi
