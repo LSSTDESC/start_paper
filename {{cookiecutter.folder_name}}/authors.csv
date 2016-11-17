@@ -1,0 +1,4 @@
+Lastname,Firstname,Authorname,AuthorType,JoinedAsBuilder,Affiliation,Contribution,Email
+Drlica-Wagner,Alex,A.~Drlica-Wagner,Contact,False,FNAL,Code Monkey,kadrlica@fnal.gov
+Marshall,Phil,P.~Marshall,Contributor,False,SLAC,Motivation,dr.phil.marshall@gmail.com
+Seth,Digel,S.~Digel,Builder,True,SLAC,Wisdom,digel@stanford.edu
