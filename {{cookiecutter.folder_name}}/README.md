@@ -22,7 +22,7 @@ You can compile latex papers locally with
 ```
 make  [apj|apjl|prd|prl|mnras]
 ```
-(`make` with no arguments compiles latex in LSST DESC Note style.)
+`make` with no arguments compiles the latex using the `texmf/styles/lsstdescnote.cls` class, with commands defined in `texmf/styles/lsstdesc_macros.sty`. Don't edit these style files, as you may want to replace them with newer versions as they become available. Instead, use the `macros.tex` file to add your own `newcommand`'s and `def`'s.
 
 ## Updating the Styles and Templates
 
@@ -48,7 +48,7 @@ make upgrade
 
 If this project is in a public GitHub repo, you can use the `.travis.yml` file in this folder to cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit to the master branch. The paper should appear as:
 
-**https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf{{ cookiecutter.folder_name }}.pdf**
+**https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf/{{ cookiecutter.folder_name }}.pdf**
 
 To enable this service, you need to follow these steps:
 
