@@ -25,13 +25,24 @@ script:
   - make -C doc/desc-0000-start_paper-intro
   - cp doc/desc-0000-start_paper-intro/desc-0000-start_paper-intro.pdf .
 
-# Finally, if it's the master branch being updated, force-push the
-# resulting PDF to an otherwise empty "pdf" branch:
-after_success: |
+# Finally, deploy the PDF by force-pushing to an otherwise empty orphan
+# branch (ie one with no history). This saves the repo from bloating.
+after_success:
+# 1) If it's the master branch being updated, push to a "pdf" branch:
     if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
         git checkout --orphan pdf
         git rm -rf .
         git add -f desc-0000-start_paper-intro.pdf
         git -c user.name='travis' -c user.email='travis' commit -m init
         git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper pdf
+    fi
+# 2) If it's a development branch being updated, push to a "drafts"
+# branch named after the dev branch:
+    if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+        draft="drafts/$TRAVIS_BRANCH"
+        git checkout --orphan $draft
+        git rm -rf .
+        git add -f desc-0000-start_paper-intro.pdf
+        git -c user.name='travis' -c user.email='travis' commit -m init
+        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper $draft
     fi
