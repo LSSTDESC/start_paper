@@ -1,9 +1,12 @@
 % {% raw %}
-\usepackage{soul}
+%
+%  Commands to facilitate LaTeX and physics formatting.
+%
+%  author: Alex Drlica-Wagner
+
 \usepackage{amsmath}
 \usepackage{xspace}
-\usepackage{xifthen}
-\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{xcolor}
 
 % General formatting
 \newcommand{\ie}{i.e.\xspace}
@@ -14,6 +17,7 @@
 \newcommand{\super}[1]{\ensuremath{^{\textrm{#1}}}}
 \newcommand{\sub}[1]{\ensuremath{_{\textrm{#1}}}}
 
+% Inline comments and highlighting
 \newcommand{\FIXME}[1]{{\bf \textcolor{red}{#1}}}
 %\newcommand{\FIXME}[1]{{#1}}
 \newcommand{\CHECK}[1]{{\bf \textcolor{orange}{#1}}}
@@ -39,7 +43,6 @@
 \newcommand{\dd}{\ensuremath{\rm d}}
 \newcommand{\var}[1]{\ensuremath{#1}\xspace}
 
-
 % Referencing
 \newcommand{\secref}[1]{Section~\ref{sec:#1}}
 \newcommand{\appref}[1]{Appendix~\ref{app:#1}}
@@ -48,13 +51,6 @@
 \newcommand{\figref}[1]{Figure~\ref{fig:#1}}
 \newcommand{\figrefs}[2]{Figures~\ref{fig:#1} and \ref{fig:#2}}
 \newcommand{\eqnref}[1]{Equation~\ref{eqn:#1}}
-
-% Astronomy
-\newcommand{\LCDM}{\ensuremath{\rm \Lambda CDM}\xspace}
-\newcommand{\ra}{{\ensuremath{\alpha_{2000}}}\xspace}
-\newcommand{\dec}{{\ensuremath{\delta_{2000}}}\xspace}
-\newcommand{\glon}{{\ensuremath{\ell}}\xspace}
-\newcommand{\glat}{{\ensuremath{b}}\xspace}
 
 % Units
 \newcommand{\unit}[1]{\ensuremath{\mathrm{\,#1}}\xspace}
@@ -90,4 +86,12 @@
 \providecommand{\deg}{}
 \renewcommand{\deg}{\unit{deg}}
 \newcommand{\kms}{{\km\second^{-1}}}
+
+% Astronomy
+\newcommand{\LCDM}{\ensuremath{\rm \Lambda CDM}\xspace}
+\newcommand{\ra}{{\ensuremath{\alpha_{2000}}}\xspace}
+\newcommand{\dec}{{\ensuremath{\delta_{2000}}}\xspace}
+\newcommand{\glon}{{\ensuremath{\ell}}\xspace}
+\newcommand{\glat}{{\ensuremath{b}}\xspace}
+
 % {% endraw %}
