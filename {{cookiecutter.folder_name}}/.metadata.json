@@ -1,0 +1,10 @@
+{
+    "authors": "{{ cookiecutter.authors }}",
+    "title": "{{ cookiecutter.title }}",
+    "description": "{{ cookiecutter.description }}",
+    "short_title": "{{ cookiecutter.short_title }}",
+    "serial_number": "{{ cookiecutter.serial_number }}",
+    "repo_name": "{{ cookiecutter.repo_name }}",
+    "folder_name": "{{ cookiecutter.folder_name }}",
+    "default_format": "{{ cookiecutter.default_format }}"
+}
