@@ -48,7 +48,7 @@ make upgrade
 
 If this project is in a public GitHub repo, you can use the `.travis.yml` file in this folder to cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit to the master branch. The paper should appear as:
 
-**https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf/{{ cookiecutter.folder_name }}.pdf**
+**https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf{{ cookiecutter.folder_name }}.pdf**
 
 To enable this service, you need to follow these steps:
 
