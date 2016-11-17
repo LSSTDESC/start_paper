@@ -1,4 +1,5 @@
-# Install latex, and the various packages used by the start_paper Makefile:
+# Install latex, and the various packages used by the start_paper
+# Makefile:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y gsl-bin libgsl0-dev
@@ -21,28 +22,32 @@ before_script:
 
 # Now make the PDF, and move it to the top level, ready for deployment.
 script:
+# Run tests:
   - nosetests tests/
-  - make -C doc/desc-0000-start_paper-intro
-  - cp doc/desc-0000-start_paper-intro/desc-0000-start_paper-intro.pdf .
+# Build this paper:
+  - FOLDER="doc/desc-0000-start_paper-intro"
+  - PAPER="desc-0000-start_paper-intro.pdf"
+  - make -C "$FOLDER"
+  - cp "$FOLDER"/"$PAPER" .
 
 # Finally, deploy the PDF by force-pushing to an otherwise empty orphan
 # branch (ie one with no history). This saves the repo from bloating.
 after_success:
+    - DRAFT="drafts/$TRAVIS_BRANCH"
 # 1) If it's the master branch being updated, push to a "pdf" branch:
-    if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+    - if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
         git checkout --orphan pdf
         git rm -rf .
-        git add -f desc-0000-start_paper-intro.pdf
+        git add -f "$PAPER"
         git -c user.name='travis' -c user.email='travis' commit -m init
         git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper pdf
-    fi
+    - fi
 # 2) If it's a development branch being updated, push to a "drafts"
 # branch named after the dev branch:
-    if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
-        draft="drafts/$TRAVIS_BRANCH"
-        git checkout --orphan $draft
+    - if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+        git checkout --orphan $DRAFT
         git rm -rf .
-        git add -f desc-0000-start_paper-intro.pdf
+        git add -f "$PAPER"
         git -c user.name='travis' -c user.email='travis' commit -m init
-        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper $draft
-    fi
+        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper $DRAFT
+    - fi
