@@ -34,16 +34,16 @@ script:
 # 2) If it's a development branch being updated, push to a "drafts"
 # branch named after the dev branch.  
   - REMOTEBRANCH="pdf"
-  - if [ "$TRAVIS_BRANCH" != "master" ]; then REMOTEBRANCH="drafts/$TRAVIS_BRANCH" ; fi
+  - if [[ "$TRAVIS_BRANCH" != "master" ]]; then REMOTEBRANCH="drafts/$TRAVIS_BRANCH" ; fi
   - echo "Deploying to branch $REMOTEBRANCH"
 
 # Finally, deploy the PDF by force-pushing to an otherwise empty orphan
 # branch (ie one with no history). This saves the repo from bloating.
-after_success:
-    if [ -n "$GITHUB_API_KEY" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-        git checkout --orphan $REMOTEBRANCH
-        git rm -rf .
-        git add -f $PAPER
-        git -c user.name='travis' -c user.email='travis' commit -m init
-        git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper $REMOTEBRANCH
-    fi
+after_success: |
+  if [ -n "$GITHUB_API_KEY" ] && [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
+    git checkout --orphan $REMOTEBRANCH
+    git rm -rf .
+    git add -f $PAPER
+    git -c user.name='travis' -c user.email='travis' commit -m init
+    git push -q -f https://drphilmarshall:$GITHUB_API_KEY@github.com/DarkEnergyScienceCollaboration/start_paper $REMOTEBRANCH
+  fi
