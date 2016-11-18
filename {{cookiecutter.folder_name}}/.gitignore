@@ -13,5 +13,5 @@
 *.bbl
 *Notes.bib
 main.pdf
-main.tar.gz
 {{cookiecutter.folder_name}}.pdf
+{{cookiecutter.folder_name}}.tar.gz

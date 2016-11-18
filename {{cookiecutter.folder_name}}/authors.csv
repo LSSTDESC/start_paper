@@ -1,0 +1,13 @@
+LastName, FirstName, AuthorName, AuthorType, JoinedAsBuilder, Affiliation, Contribution, Email
+"Sur", "Christian", "{{ cookiecutter.initial_author }}", Contact, False,  "{{ cookiecutter.initial_affiliation }}", "started the paper.", "{{ cookiecutter.initial_email }}"
+#
+# While we wait for the LSST DESC publications system to generate files
+# like this from its database, we'll need to edit authors.csv by hand.
+# Here are some example entries:
+# Drlica-Wagner, Alex, "A.~Drlica-Wagner", Contact, False, "Fermi National Accelerator Laboratory, Batavia, IL, USA", "enabled the switching between latex formats, and wrote the Makefile", kadrlica@fnal.gov
+# Marshall, Phil, "P.~J.~Marshall", Contributor, False, "SLAC National Accelerator Laboratory, Menlo Park, CA, USA", "initiated the project, and adapted the cookiecutter functionality from the lsst-technote-bootstrap", dr.phil.marshall@gmail.com
+# Marshall, Phil, "P.~J.~Marshall", Contributor, False, "KIPAC, Stanford, CA, USA", "initiated the project, and adapted the cookiecutter functionality from the lsst-technote-bootstrap", dr.phil.marshall@gmail.com
+# Seth, Digel, "S.~Digel", Builder, True, SLAC, "advised on best practices regarding the anticipated LSST DESC publication system", digel@stanford.edu
+#
+# Notes:
+#   - If someone has two affiliations, they get two rows.

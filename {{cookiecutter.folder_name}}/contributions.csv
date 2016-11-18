@@ -1,2 +1,0 @@
-LastName, FirstName, AuthorName, AuthorType, JoinedAsBuilder, Affiliation, Contribution, Email
-"Smith", "Kate", "{{ cookiecutter.initial_author }}", Contact, False,  "{{ cookiecutter.initial_affiliation }}", "started the paper.", "{{ cookiecutter.initial_email }}"
