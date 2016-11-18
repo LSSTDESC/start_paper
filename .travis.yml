@@ -31,10 +31,9 @@ script:
   - cp -v $FOLDER/$PAPER .
 # Prepare to deploy final and draft versions.
 # 1) If it's the master branch being updated, push to a "pdf" branch.
-# 2) If it's a development branch being updated, push to a "drafts"
-# branch named after the dev branch.  
+# 2) If it's a development branch being updated, push to a "current" branch.  
   - REMOTEBRANCH="pdf"
-  - if [[ "$TRAVIS_BRANCH" != "master" ]]; then REMOTEBRANCH="drafts/$TRAVIS_BRANCH" ; fi
+  - if [[ "$TRAVIS_BRANCH" != "master" ]]; then REMOTEBRANCH="current" ; fi
   - echo "Deploying to branch $REMOTEBRANCH"
 
 # Finally, deploy the PDF by force-pushing to an otherwise empty orphan
