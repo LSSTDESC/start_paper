@@ -96,6 +96,7 @@ texmf/styles/aas_macros.sty \
 texmf/styles/aastex.cls \
 texmf/styles/aastex61.cls \
 texmf/styles/aps_macros.sty \
+texmf/styles/lsstdesc_macros.sty \
 texmf/styles/docswitch.sty \
 texmf/styles/emulateapj.cls \
 texmf/styles/mnras.cls \
