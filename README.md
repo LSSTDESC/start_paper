@@ -6,9 +6,9 @@ Use `cookiecutter` to make a folder containing everything you need to start writ
 
 ## Why should I use this tool?
 
-1. It'll save you some set-up time, which you can spend time writing about science instead.
+1. It'll save you some paper set-up time.
 2. It'll help you comply with the LSST DESC Publication Policy, which places some requirements on papers to state the contributions of its authors.
-3. It'll save you some writing time, by automagically writing the author list and acknowledgments, and getting the latex styling right,  for you.
+3. It'll save you some writing time, by automagically constructing the author list and acknowledgments, and getting the latex styling right,  for you.
 
 ## How do I use it?
 
@@ -29,9 +29,14 @@ short_title [paper_title]: intro
 serial_number [0000]: 0000
 repo_name [ProjectName]: start_paper
 folder_name [desc-0000-start_paper-intro]:
+default_format [tex]: apj
 ```
 
-The folder that is then produced (silently!) will have the `folder_name` that you entered, and it will contain several pre-configured template files. For LSST DESC Notes, you have a range of format choices available to you: Markdown, rST, ipynb and latex. For latex journal papers, we also provide the AJ style files for convenience, as well as some useful macros. Just choose a format, and start writing in that file!
+The folder that is then produced (silently!) will have the `folder_name` that you entered, and it will contain several pre-configured template files. For LSST DESC Notes, you have a range of format choices available to you: `md`, `rst`, `ipynb` and `tex`.
+
+For latex journal papers, we provide a number of style files for convenience, as well as some useful macros. Just choose a format (`apj`, `apjl`, `mnras`, `prd`, `prl`, `tex`, `md`, `rst`, `ipynb`) and start writing in that file! Templates for all formats are provided, so you can switch to a different one at any time. For example, your `default_format` might be `tex`, but `make apjl` will produce a PDF of your note using the ApJL style file.
+
+> For now, `make ipynb` still causes the `main.tex` file to be compiled. In future, we'll enable compilation of PDF or HTML from IPython notebooks.
 
 Don't forget to `git add` and `git commit` the files you edit, in the usual way. You might want to delete the templates you don't use - although if you think you might one day want to upgrade from markdown to latex, or from a Note to a journal article, you could keep those files around.
 
