@@ -27,14 +27,15 @@ script:
 # Build this paper:
   - FOLDER="doc/desc-0000-start_paper-intro"
   - PAPER="desc-0000-start_paper-intro.pdf"
-  - make -C "$FOLDER"
-  - cp "$FOLDER"/"$PAPER" .
+  - make -C $FOLDER
+  - cp -v $FOLDER/$PAPER .
 # Prepare to deploy final and draft versions.
 # 1) If it's the master branch being updated, push to a "pdf" branch.
 # 2) If it's a development branch being updated, push to a "drafts"
 # branch named after the dev branch.  
   - REMOTEBRANCH="pdf"
   - if [ "$TRAVIS_BRANCH" != "master" ]; then REMOTEBRANCH="drafts/$TRAVIS_BRANCH" ; fi
+  - echo "Deploying to branch $REMOTEBRANCH"
 
 # Finally, deploy the PDF by force-pushing to an otherwise empty orphan
 # branch (ie one with no history). This saves the repo from bloating.
