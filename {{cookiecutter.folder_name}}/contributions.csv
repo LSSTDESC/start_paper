@@ -1,2 +1,0 @@
-Author Name,  Author Affiliation, JoinedAsBuilder, Contribution
-"{{ cookiecutter.initial_author }}", "{{ cookiecutter.initial_affiliation }}", "False", "started the paper."
