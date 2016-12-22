@@ -13,6 +13,8 @@
 # upgrade` to cleanly over-write this Makefile...
 main=main
 outname=$(notdir $(shell pwd))
+style=tex
+status=draft
 
 # LATEX environment variables
 export TEXINPUTS:=./texmf/styles/:./tables/:
@@ -36,12 +38,12 @@ tabdir=./tables
 tables=$(tabdir)/*.tex
 styles=./texmf/styles/*.{sty,cls}
 bibs=./texmf/bib/*.bst
-source=$(main).{tex,bbl,bib} lsstdesc.bib macros.tex authors.tex acknowledgments.tex
+source=$(main).{tex,bbl,bib} lsstdesc.bib authors.tex acknowledgments.tex contributions.tex
 
 tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 
 # Interpret `make` with no target as `make tex`, a latex Note
-all: export flag = \def\flag{tex}
+all: export flag = \def\flag{${style}}
 all: main copy
 
 copy:
@@ -53,7 +55,7 @@ touch:
 #http://journals.aas.org/authors/aastex/linux.html
 #change the compiler call to allow a "." file
 # {% raw %}
-main :
+main : authlist
 	latexmk -g -pdf  \
 	-pdflatex='openout_any=a pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
@@ -66,8 +68,13 @@ tar : main
 	cd ${tardir} && tar -czf ../${outname}.tar.gz . && cd ..
 	rm -rf ${tardir}
 
+authlist :
+	mkauthlist -j ${style} -f -c "LSST Dark Energy Science Collaboration" \
+		--cntrb contributions.tex authors.csv authors.tex
+
 # http://stackoverflow.com/q/8028314/
-TARGETS=apj apjl prd prl mnras tex
+TARGETS=apj apjl prd prl mnras tex aastex61 emulateapj
+$(TARGETS): export style = $(@)
 $(TARGETS): export flag = \def\flag{$(@)}
 $(TARGETS):
 	$(MAKE) -e main
@@ -121,8 +128,6 @@ update:
 
 TEMPLATES=\
 acknowledgments.tex \
-authors.tex \
-macros.tex \
 main.ipynb \
 main.md \
 main.rst \
@@ -154,4 +159,6 @@ new:
 upgrade:
 	@echo "\nDownloading the latest version of the Makefile: \n"
 	curl -s -S -o Makefile ${baseurl}/Makefile
+	@echo "\nUpgrading version of mkauthlist: \n"
+	pip install mkauthlist --upgrade --no-deps
 	@echo "\nNow get the latest styles and templates with\n\n    make update\n    make templates\n"
