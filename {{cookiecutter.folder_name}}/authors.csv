@@ -1,6 +1,15 @@
-Lastname,Firstname,Authorname,AuthorType,JoinedAsBuilder,Affiliation,Contribution,Email
-Drlica-Wagner,Alex,A.~Drlica-Wagner,Contact,False,"Fermi National Accelerator Laboratory, P. O. Box 500, Batavia, IL 60510, USA",Code Monkey,kadrlica@fnal.gov
-Marshall,Phil,P.~Marshall,Contributor,False,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Motivation,dr.phil.marshall@gmail.com
-Marshall,Phil,P.~Marshall,Contributor,False,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Motivation,dr.phil.marshall@gmail.com
-Digel,Seth,S.~Digel,Builder,True,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Wisdom,digel@stanford.edu
-Digel,Seth,S.~Digel,Builder,True,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Wisdom,digel@stanford.edu
+#
+# While we wait for the LSST DESC publications system to generate files
+# like this from its database, we'll need to edit authors.csv by hand.
+# Below are some example entries.
+#
+# Notes:
+#   - If someone has two affiliations, they get two rows.
+#   - Cannot deal with empty rows
+Lastname,Firstname,Authorname,AuthorType,Affiliation,Contribution,Email
+#"Sur", "Christian","{{ cookiecutter.initial_author }}",Contact,"{{ cookiecutter.initial_affiliation }}","Started paper.","{{ cookiecutter.initial_email }}"
+Drlica-Wagner,Alex,A.~Drlica-Wagner,Contact,"Fermi National Accelerator Laboratory, P. O. Box 500, Batavia, IL 60510, USA",Code Monkey,kadrlica@fnal.gov
+Marshall,Phil,P.~Marshall,Contributor,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Motivation,dr.phil.marshall@gmail.com
+Marshall,Phil,P.~Marshall,Contributor,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Motivation,dr.phil.marshall@gmail.com
+Digel,Seth,S.~Digel,Builder,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Wisdom,digel@stanford.edu
+Digel,Seth,S.~Digel,Builder,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Wisdom,digel@stanford.edu

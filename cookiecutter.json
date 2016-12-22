@@ -1,6 +1,5 @@
 {
-    "initial_author": "First Last",
-    "initial_affiliation": "Institution, address",
+    "authors": "First Author, Second Author, Another Author",
     "title": "The Title of This Paper",
     "description": "A very brief description of your paper, for the folder's README. (Once you've typed this, you'll be asked for three more items: a short_title, a serial_number, and the project repo name. These will then be used to set the paper's folder name. The serial number can be changed later, so choosing 0000 is fine.)",
     "short_title": "paper_title",

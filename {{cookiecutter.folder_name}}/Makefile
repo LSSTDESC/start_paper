@@ -12,9 +12,14 @@
 # Primary file names - avoid cookiecutter variables, to enable `make
 # upgrade` to cleanly over-write this Makefile...
 main=main
+default=$(shell cat .metadata.json | grep 'default_format' | cut -d'"' -f4)
 outname=$(notdir $(shell pwd))
-style=tex
-status=draft
+
+ifeq ($(default), {{ cookiecutter.default_format }})
+ style=tex
+else
+ style=${default}
+endif
 
 # LATEX environment variables
 export TEXINPUTS:=./texmf/styles/:./tables/:
@@ -38,11 +43,16 @@ tabdir=./tables
 tables=$(tabdir)/*.tex
 styles=./texmf/styles/*.{sty,cls}
 bibs=./texmf/bib/*.bst
-source=$(main).{tex,bbl,bib} lsstdesc.bib authors.tex acknowledgments.tex contributions.tex
+source=$(main).{tex,bbl,bib} lsstdesc.bib acknowledgments.tex authors.tex contributions.tex
 
 tarfiles=$(figures) $(tables) $(styles) $(bibs) $(source)
 
-# Interpret `make` with no target as `make tex`, a latex Note
+# Interpret `make` with no target as `make tex` (a latex Note).
+# At present, if the default_format is anything other than
+# [apj|apjl|mnras|prd|prl|emulateapj], a latex Note is made.
+# In future, we could think of using `make` to eg run the ipynb
+# notebook and make PDF from the output, but this has not been
+# implemented yet.
 all: export flag = \def\flag{${style}}
 all: main copy
 
@@ -107,6 +117,7 @@ texmf/styles/docswitch.sty \
 texmf/styles/emulateapj.cls \
 texmf/styles/mnras.cls \
 texmf/styles/lsstdescnote.cls \
+texmf/styles/lsstdesc_macros.sty \
 .logos/desc-logo-small.png \
 .logos/desc-logo.png \
 .logos/header.png \
