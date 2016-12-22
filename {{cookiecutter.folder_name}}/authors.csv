@@ -1,4 +1,6 @@
 Lastname,Firstname,Authorname,AuthorType,JoinedAsBuilder,Affiliation,Contribution,Email
-Drlica-Wagner,Alex,A.~Drlica-Wagner,Contact,False,FNAL,Code Monkey,kadrlica@fnal.gov
-Marshall,Phil,P.~Marshall,Contributor,False,SLAC,Motivation,dr.phil.marshall@gmail.com
-Digel,Seth,S.~Digel,Builder,True,SLAC,Wisdom,digel@stanford.edu
+Drlica-Wagner,Alex,A.~Drlica-Wagner,Contact,False,"Fermi National Accelerator Laboratory, P. O. Box 500, Batavia, IL 60510, USA",Code Monkey,kadrlica@fnal.gov
+Marshall,Phil,P.~Marshall,Contributor,False,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Motivation,dr.phil.marshall@gmail.com
+Marshall,Phil,P.~Marshall,Contributor,False,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Motivation,dr.phil.marshall@gmail.com
+Digel,Seth,S.~Digel,Builder,True,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Wisdom,digel@stanford.edu
+Digel,Seth,S.~Digel,Builder,True,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Wisdom,digel@stanford.edu
