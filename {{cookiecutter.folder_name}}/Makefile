@@ -79,6 +79,7 @@ tar : main
 	rm -rf ${tardir}
 
 authlist :
+	pip install mkauthlist
 	mkauthlist -j ${style} -f -c "LSST Dark Energy Science Collaboration" \
 		--cntrb contributions.tex authors.csv authors.tex
 
