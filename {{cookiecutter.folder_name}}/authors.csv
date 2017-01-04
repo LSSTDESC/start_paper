@@ -7,9 +7,9 @@
 #   - If someone has two affiliations, they get two rows.
 #   - Cannot deal with empty rows
 Lastname,Firstname,Authorname,AuthorType,Affiliation,Contribution,Email
-#"Sur", "Christian","{{ cookiecutter.initial_author }}",Contact,"{{ cookiecutter.initial_affiliation }}","Started paper.","{{ cookiecutter.initial_email }}"
-Drlica-Wagner,Alex,A.~Drlica-Wagner,Contact,"Fermi National Accelerator Laboratory, P. O. Box 500, Batavia, IL 60510, USA",Code Monkey,kadrlica@fnal.gov
-Marshall,Phil,P.~Marshall,Contributor,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Motivation,dr.phil.marshall@gmail.com
-Marshall,Phil,P.~Marshall,Contributor,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Motivation,dr.phil.marshall@gmail.com
-Digel,Seth,S.~Digel,Builder,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA",Wisdom,digel@stanford.edu
-Digel,Seth,S.~Digel,Builder,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA",Wisdom,digel@stanford.edu
+#"Lastname", "Firstname","{{ cookiecutter.initial_author }}",Contact,"{{ cookiecutter.initial_affiliation }}","Initiated project, led development work.","{{ cookiecutter.initial_email }}"
+Drlica-Wagner,Alex,A.~Drlica-Wagner,Contact,"Fermi National Accelerator Laboratory, P. O. Box 500, Batavia, IL 60510, USA","Developed algorithms, implemented software.",kadrlica@fnal.gov
+Marshall,Phil,P.~Marshall,Contributor,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA","Initiated and led project.",dr.phil.marshall@gmail.com
+Marshall,Phil,P.~Marshall,Contributor,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA","Initiated and led project.",dr.phil.marshall@gmail.com
+Digel,Seth,S.~Digel,Builder,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA","Advised on LSST DESC publication system requirements.",digel@stanford.edu
+Digel,Seth,S.~Digel,Builder,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA","Advised on LSST DESC publication system requirements.",digel@stanford.edu
