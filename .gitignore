@@ -2,10 +2,3 @@
 *ipynb_checkpoints*
 templates
 .bib
-
-# Note about Notes:
-*.aux
-*.log
-*.blg
-*.dvi
-desc-0000-start_paper-intro.pdf
