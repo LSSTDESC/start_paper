@@ -40,6 +40,23 @@ For latex journal papers, we provide a number of style files for convenience, as
 
 Don't forget to `git add` and `git commit` the files you edit, in the usual way. You might want to delete the templates you don't use - although if you think you might one day want to upgrade from markdown to latex, or from a Note to a journal article, you could keep those files around.
 
+## What does it do about author lists, contributions etc?
+
+`make` generates two new latex files, an author list in the appropriate style
+in `authors.tex`, and a simple listing of author contributions for the
+acknowledgements in `contributions.tex`. This is carried out using the python
+program [`mkauthlist`](https://github.com/DarkEnergySurvey/mkauthlist) which
+the `Makefile` will attempt to install for you. This feature is somewhat
+experimental: if you hit problems, please [write us an
+issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues).
+To change the author list and contribution statements, please edit the
+`authors.csv` file. Eventually, this file will be automatically obtained from
+the LSST DESC Publication System, but for now we can track our own
+contributions manually in this way. If you are writing a Note in `markdown`,
+`rst` or `ipynb` format, you'll need to add your contribution list to your main
+file by hand.
+
+
 ## Licence, credits etc
 
 People developing this project:
@@ -48,4 +65,4 @@ People developing this project:
 * Heather Kelly [(@heather999)](https://github.com/heather999)
 * Jonathan Sick [(@jonathansick)](https://github.com/jonathansick)
 
-This is open source software, available under the BSD license. If you are interested in this project, please do drop us a line via the hyperlinked contact names above, or by [writing us an issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues?q=).
+This is open source software, available under the BSD license. If you are interested in this project, please do drop us a line via the hyperlinked contact names above, or by [writing us an issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues).
