@@ -114,8 +114,7 @@ update:
 
 TEMPLATES=\
 acknowledgments.tex \
-authors.tex \
-macros.tex \
+authors.csv \
 main.ipynb \
 main.md \
 main.rst \
