@@ -145,7 +145,8 @@ main.ipynb \
 main.md \
 main.rst \
 main.tex \
-main.bib
+main.bib \
+.metadata.json
 
 .PHONY: $(TEMPLATES) templates
 $(TEMPLATES):
