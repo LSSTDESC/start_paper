@@ -7,7 +7,7 @@
 # To tar up a flat version of a specific format:
 # > make <format> tar
 #
-# Alex Drlica-Wagner: https://github.com/DarkEnergyScienceCollaboration/start_paper/issues/new?body=@kadrlica
+# Alex Drlica-Wagner: https://github.com/LSSTDESC/start_paper/issues/new?body=@kadrlica
 
 # Primary file names - avoid cookiecutter variables, to enable `make
 # upgrade` to cleanly over-write this Makefile...
@@ -78,8 +78,8 @@ tar : main
 	cd ${tardir} && tar -czf ../${outname}.tar.gz . && cd ..
 	rm -rf ${tardir}
 
-authlist :
-	pip install mkauthlist
+authlist : authors.csv
+	pip install --upgrade mkauthlist
 	mkauthlist -j ${style} -f -c "LSST Dark Energy Science Collaboration" \
 		--cntrb contributions.tex authors.csv authors.tex
 
@@ -105,7 +105,7 @@ clean: tidy
 
 # Update the tex styles etc:
 
-baseurl=https://raw.githubusercontent.com/DarkEnergyScienceCollaboration/start_paper/master/%7B%7Bcookiecutter.folder_name%7D%7D
+baseurl=https://raw.githubusercontent.com/LSSTDESC/start_paper/master/%7B%7Bcookiecutter.folder_name%7D%7D
 
 UPDATES=\
 texmf/bib/apj.bst \

@@ -1,0 +1,10 @@
+{
+    "authors": "Alex Drlica-Wagner and Phil Marshall",
+    "title": "How to Start Writing an LSST DESC Paper",
+    "description": "We describe the \texttt{start\_paper} project, including the cookiecutter mechanism and various paper and LSST DESC Note templates.",
+    "short_title": "intro",
+    "serial_number": "0000",
+    "repo_name": "start_paper",
+    "folder_name": "desc-0000-start_paper-intro",
+    "default_format": "tex"
+}
