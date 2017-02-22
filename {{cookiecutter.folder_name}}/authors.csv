@@ -22,4 +22,4 @@
 #
 # =============================================================================
 Lastname,Firstname,Authorname,AuthorType,Affiliation,Contribution,Email
-"Lastname", "Firstname","{{ cookiecutter.initial_author }}",Contact,"{{ cookiecutter.initial_affiliation }}","Initiated project, led development work.","{{ cookiecutter.initial_email }}"
+"Lastname", "Firstname","{{ cookiecutter.author }}",Contact,"{{ cookiecutter.affiliation }}","Initiated project, led development work.","{{ cookiecutter.email }}"

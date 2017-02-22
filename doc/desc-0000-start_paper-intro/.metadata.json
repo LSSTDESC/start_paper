@@ -1,10 +1,12 @@
 {
-    "authors": "Alex Drlica-Wagner and Phil Marshall",
+    "author": "Alex Drlica-Wagner",
+    "affiliation": "Fermilab",
+    "email": "kadrlica@fnal.gov",
     "title": "How to Start Writing an LSST DESC Paper",
-    "description": "We describe the \texttt{start\_paper} project, including the cookiecutter mechanism and various paper and LSST DESC Note templates.",
-    "short_title": "intro",
-    "serial_number": "0000",
+    "description": "We describe the \texttt{start\_paper} project, including the \texttt{cookiecutter} mechanism and various paper and LSST DESC Note templates.",
     "repo_name": "start_paper",
+    "serial_number": "0000",
+    "short_title": "intro",
     "folder_name": "desc-0000-start_paper-intro",
     "default_format": "tex"
 }

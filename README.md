@@ -22,15 +22,18 @@ cookiecutter https://github.com/DarkEnergyScienceCollaboration/start_paper.git
 ```
 This will ask you some questions. Here's an example session:
 ```
-authors [First Author, Second Author, Another Author]: Phil Marshall, Alex Drlica-Wagner, Heather Kelly, Jonathan Sick
+author [Initial author]: Phil Marshall
+affiliation [Initial author's affiliation]: SLAC National Accelerator Laboratory, Menlo Park, CA 94025
+email [Initial author's email address]: pjm@slac.stanford.edu
 title [The Title of This Paper]: How to Start Writing an LSST DESC Paper
-description [A very brief description of your paper, for the folder's README. (Once you've typed this, you'll be asked for three more items: a short_title, a serial_number, and the project repo name. These will then be used to set the paper's folder name. The serial number can be changed later, so choosing 0000 is fine.)]: A short paper describing the "start_paper" project, including the cookiecutter mechanism and the various templates.
-short_title [paper_title]: intro
-serial_number [0000]: 0000
+description [A very brief description of your paper, for the folder's README. (Once you've typed this, you'll be asked for three more items:  the project repo name, a serial number (just choose 0000, it'll get changed later), and a short title (that doesn't contain the repo name). These will then be used to set the paper's folder name, for you to accept or modify. Finally, you'll be asked to choose your Note's format, from [tex/apj/mnras/prl/prd/ipynb/md/rst]. You can always change your mind later, and it's easy to convert a tex Note into a journal paper with the start_paper make command.]: A short paper describing the \texttt{start\_paper} project, including the \texttt{cookiecutter} mechanism and the various templates.
 repo_name [ProjectName]: start_paper
+serial_number [0000]: 0000
+short_title [paper_title]: intro
 folder_name [desc-0000-start_paper-intro]:
-default_format [tex]: apj
+default_format [tex]: tex
 ```
+
 
 The folder that is then produced (silently!) will have the `folder_name` that you entered, and it will contain several pre-configured template files. For LSST DESC Notes, you have a range of format choices available to you: `md`, `rst`, `ipynb` and `tex`.
 
