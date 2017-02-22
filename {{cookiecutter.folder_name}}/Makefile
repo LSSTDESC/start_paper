@@ -158,7 +158,7 @@ templates:
 	@mkdir -p templates
 	$(MAKE) $(TEMPLATES)
 	$(MAKE) new
-	ls templates/*
+	ls -a templates/*
 
 # Get a template copy of the latest Makefile, for reference:
 .PHONY: new
