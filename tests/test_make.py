@@ -4,7 +4,7 @@ Test latex compilation script
 """
 __author__ = "Alex Drlica-Wagner"
 
-import os
+import os,shutil
 from subprocess import Popen, PIPE
 import unittest
 
@@ -18,6 +18,7 @@ commands = [
     ['make','prl'],
     ['make','prd'],
     ['make','mnras'],
+    ['make','emulateapj'],
 ]
 
 class TestMake(unittest.TestCase):
@@ -39,10 +40,13 @@ class TestMake(unittest.TestCase):
 
     @classmethod
     def create_method(cls, args):
+        method_name = 'test_%s'%('_'.join(args))
         def test_method(self):
             if isinstance(args,basestring): self.runcmd(args)
             else: self.runcmd(' '.join(args))
-        test_method.__name__ = 'test_%s'%('_'.join(args))
+            # copy the output file for inspection
+            shutil.copy('main.pdf',method_name+'.pdf')
+        test_method.__name__ = method_name
         return test_method
 
     @classmethod
