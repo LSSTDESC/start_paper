@@ -1,6 +1,6 @@
-.. figure:: ./.logos/header.png
+.. figure:: ./texmf/logos/header.png
   :name: header
-  :target: ./.logos/header.png
+  :target: ./texmf/logos/header.png
   :align: center
 
 ========================================================================
