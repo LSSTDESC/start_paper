@@ -119,9 +119,9 @@ texmf/styles/emulateapj.cls \
 texmf/styles/mnras.cls \
 texmf/styles/lsstdescnote.cls \
 texmf/styles/lsstdesc_macros.sty \
-.logos/desc-logo-small.png \
-.logos/desc-logo.png \
-.logos/header.png \
+texmf/logos/desc-logo-small.png \
+texmf/logos/desc-logo.png \
+texmf/logos/header.png \
 lsstdesc.bib \
 .travis.yml \
 figures/example.png

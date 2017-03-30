@@ -1,4 +1,4 @@
-![](./.logos/header.png)
+![](./texmf/logos/header.png)
 
 # {{ cookiecutter.title }}
 
