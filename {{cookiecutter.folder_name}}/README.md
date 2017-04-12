@@ -48,9 +48,11 @@ make upgrade
 
 ## Automatic PDF Sharing
 
-If this project is in a public GitHub repo, you can use the `.travis.yml` file in this folder to cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit to the master branch. The paper should appear as:
+If this project is in a public GitHub repo, you can use the `.travis.yml` file in this folder to cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit. When the `master` branch is updated, a new version of the paper should appear as:
 
 **https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf/{{ cookiecutter.folder_name }}.pdf**
+
+When a development branch is updated, a PDF is deployed to `tree/drafts/<branchname>` where `<branchname>` is the name of your branch. This enables you to share links to PDF papers even while they are not easily browseable
 
 To enable this service, you need to follow these steps:
 
