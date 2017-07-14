@@ -1,71 +1,62 @@
-# start_paper
 
-Use `cookiecutter` to make a folder containing everything you need to start writing an LSST DESC paper (either a journal article or a Note). This follows Jonathan Sick's [`lsst_technote_bootstrap`](https://github.com/lsst-sqre/lsst-technote-bootstrap) method, albeit with a simpler set-up.
+## {{ cookiecutter.folder_name }}
+# {{ cookiecutter.title }}
 
-[![Build Status](https://travis-ci.org/DarkEnergyScienceCollaboration/start_paper.svg?branch=master)](https://travis-ci.org/DarkEnergyScienceCollaboration/start_paper)
+*{{ cookiecutter.author }} and others*
 
-## Why should I use this tool?
+{{ cookiecutter.description }}
 
-1. It'll save you some paper set-up time.
-2. It'll help you comply with the LSST DESC Publication Policy, which places some requirements on papers to state the contributions of its authors.
-3. It'll save you some writing time, by automagically constructing the author list and acknowledgments, and getting the latex styling right,  for you.
 
-## How do I use it?
+## Editing this Paper
 
-You will need to install `cookiecutter`:
+Fork and/or clone the project repo, and then
+edit the primary file. The name of this file will vary according to its format, but it should be one of either `main.rst` (if it's a [`reStructuredText`](http://docutils.sourceforge.net/rst.html) Note), `main.md` (if it's a [`Markdown`](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) Note), `main.ipynb` (if it's an [`IPython Notebook`](https://ipython.org/notebook.html)) or `main.tex` (if it's a latex Note or paper).
+Please use the `figures` folder for your images.
+
+## Building this Paper
+
+GitHub is our primary distributor for LSST DESC Notes:
+once the Note has been merged into the project repo's master branch, it will be visible as a *shared* (but not *published*) paper. The presentation of Notes will be improved later, as the LSST DESC Publication System evolves.
+
+You can compile latex papers locally with
 ```
-pip install cookiecutter
+make  [apj|apjl|prd|prl|mnras]
 ```
-Then just do:
+`make` with no arguments compiles the latex using the `default_format` stored in `.metadata.json`. Choosing `tex` causes the paper to be made using the `texmf/styles/lsstdescnote.cls` class, with commands defined in `texmf/styles/lsstdesc_macros.sty`. Don't edit these style files, as you may want to replace them with newer versions as they become available. Instead, use the `macros.tex` file to add your own `newcommand`'s and `def`'s.
+
+At present, the Makefile is only used to compile latex. In future, we hope to enable compilation of jupyter notebooks, `Markdown` and `reStructuredText` format notes into PDF as well.
+
+## Updating the Styles and Templates
+
+From time to time, the latex style files will be updated: to re-download the latest versions, do
 ```
-cookiecutter https://github.com/DarkEnergyScienceCollaboration/start_paper.git
+make update
 ```
-This will ask you some questions. Here's an example session:
+This will over-write your folder's copies - but that's OK, as they are not meant to be edited by you!
+The template files (`main.*` etc) are also likely to be updated; to get fresh copies of these files, do
 ```
-author [Initial author]: Phil Marshall
-affiliation [Initial author's affiliation]: SLAC National Accelerator Laboratory, Menlo Park, CA 94025
-email [Initial author's email address]: pjm@slac.stanford.edu
-title [The Title of This Paper]: How to Start Writing an LSST DESC Paper
-description [A very brief description of your paper, for the folder's README. (Once you've typed this, you'll be asked for three more items:  the project repo name, a serial number (just choose 0000, it'll get changed later), and a short title (that doesn't contain the repo name). These will then be used to set the paper's folder name, for you to accept or modify. Finally, you'll be asked to choose your Note's format, from [tex/apj/mnras/prl/prd/ipynb/md/rst]. You can always change your mind later, and it's easy to convert a tex Note into a journal paper with the start_paper make command.]: A short paper describing the \texttt{start\_paper} project, including the \texttt{cookiecutter} mechanism and the various templates.
-repo_name [ProjectName]: start_paper
-serial_number [0000]: 0000
-short_title [paper_title]: intro
-folder_name [desc-0000-start_paper-intro]:
-default_format [tex]: tex
+make templates
+```
+However, since you will have edited at least one of the templates in your folder, `make templates` creates a special `templates` folder for you to refer to. Finally, to get *new* style or template files that are added to the `start_paper` project, you'll need to first get the latest `Makefile`, and then `make update` and/or `make templates`. The command to obtain the latest `Makefile` is
+```
+make new
+```
+This will add the latest `Makefile` to your `templates` folder. If you want to over-write your existing `Makefile`, you can do
+```
+make upgrade
 ```
 
+## Automatic PDF Sharing
 
-The folder that is then produced (silently!) will have the `folder_name` that you entered, and it will contain several pre-configured template files. For LSST DESC Notes, you have a range of format choices available to you: `md`, `rst`, `ipynb` and `tex`.
+If this project is in a public GitHub repo, you can use the `.travis.yml` file in this folder to cause [travis-ci](http://travis-ci.org) to compile your paper into a PDF in the base repo at GitHub every time you push a commit to the master branch. The paper should appear as:
 
-For latex journal papers, we provide a number of style files for convenience, as well as some useful macros. Just choose a format (`apj`, `apjl`, `mnras`, `prd`, `prl`, `tex`, `md`, `rst`, `ipynb`) and start writing in that file! Templates for all formats are provided, so you can switch to a different one at any time. For example, your `default_format` might be `tex`, but `make apjl` will produce a PDF of your note using the ApJL style file.
+**https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/tree/pdf/{{ cookiecutter.folder_name }}.pdf**
 
-> For now, `make ipynb` still causes the `main.tex` file to be compiled. In future, we'll enable compilation of PDF or HTML from IPython notebooks.
+To enable this service, you need to follow these steps:
 
-Don't forget to `git add` and `git commit` the files you edit, in the usual way. You might want to delete the templates you don't use - although if you think you might one day want to upgrade from markdown to latex, or from a Note to a journal article, you could keep those files around.
-
-## What does it do about author lists, contributions etc?
-
-`make` generates two new latex files, an author list in the appropriate style
-in `authors.tex`, and a simple listing of author contributions for the
-acknowledgements in `contributions.tex`. This is carried out using the python
-program [`mkauthlist`](https://github.com/DarkEnergySurvey/mkauthlist) which
-the `Makefile` will attempt to install for you. This feature is somewhat
-experimental: if you hit problems, please [write us an
-issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues).
-To change the author list and contribution statements, please edit the
-`authors.csv` file. Eventually, this file will be automatically obtained from
-the LSST DESC Publication System, but for now we can track our own
-contributions manually in this way. If you are writing a Note in `markdown`,
-`rst` or `ipynb` format, you'll need to add your contribution list to your main
-file by hand.
-
-
-## Licence, credits etc
-
-People developing this project:
-* Phil Marshall [(@drphilmarshall)](https://github.com/drphilmarshall)
-* Alex Drlica-Wagner [(@kadrlica)](https://github.com/kadrlica)
-* Heather Kelly [(@heather999)](https://github.com/heather999)
-* Jonathan Sick [(@jonathansick)](https://github.com/jonathansick)
-
-This is open source software, available under the BSD license. If you are interested in this project, please do drop us a line via the hyperlinked contact names above, or by [writing us an issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues).
+1. Turn on travis continuous integration, by [toggling your repo on your travis profile](https://travis-ci.org/profile). If you don't see your repo listed, you may not have permission to do this: in this case, [contact an admin via the issues](https://github.com/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/issues/new?body=@DarkEnergyScienceCollaboration/admin).
+2. Get a [GitHub "personal access token"](https://github.com/settings/tokens). Choose the "repo" option.
+3. Set the `GITHUB_API_KEY` environment variable with the value of this token at your repo's [travis settings page](https://travis-ci.org/DarkEnergyScienceCollaboration/{{ cookiecutter.repo_name }}/settings).
+4. Copy the `.travis.yml` file in this folder to the top level of your repo (or merge its contents with your existing `.travis.yml` file).
+Edit the final `git push` command with your GitHub username.  
+Commit and push to trigger your travis build, but note that the PDF will only be deployed if the master branch is updated.
