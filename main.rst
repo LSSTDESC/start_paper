@@ -4,12 +4,12 @@
   :align: center
 
 ========================================================================
-{{ cookiecutter.title }}
+Write Title Here
 ========================================================================
 
-*{{ cookiecutter.author }}*
+*A. N. Author*
 
-{{ cookiecutter.description }}
+Write abstract here.
 
 .. |date| date::
 This Note was generated on: |date|
