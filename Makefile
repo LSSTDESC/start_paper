@@ -52,8 +52,12 @@ tarfiles = $(figures) $(tables) $(styles) $(bibs) $(source)
 
 
 
-maketargets := all copy touch min tar authlist tidy clean template update new upgrade
+maketargets := all authlist clean copy help $(main) new update tar templates tidy touch
 .PHONY: $(maketargets)
+
+styleopts := apj apjl emulateapj lsstdescnote mnras prd prl
+help:
+	@echo "Usage: make [style=lsstdescnote] <target(s)>\n Possible targets: $(maketargets)\n  all: $(main) copy\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy compiled latex to <name of this directory>.pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  new: download latest version of this Makefile to templates/\n  update: update desc-tex repo\n  tar: tar up source files\n  templates: download lates templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n Options for style: $(styleopts)\n  (Anything else results in generic latex)"
 
 
 # Interpret `make` with no target as `make tex` (a latex Note).
@@ -62,8 +66,8 @@ maketargets := all copy touch min tar authlist tidy clean template update new up
 # In future, we could think of using `make` to eg run the ipynb
 # notebook and make PDF from the output, but this has not been
 # implemented yet.
-main: export flag = \def\flag{${style}}
-all: main copy
+$(main): export flag = \def\flag{${style}}
+all: $(main) copy
 
 copy:
 	cp ${main}.pdf ${outname}.pdf
@@ -78,13 +82,13 @@ $(DESCTEX):
 #http://journals.aas.org/authors/aastex/linux.html
 #change the compiler call to allow a "." file
 # {% raw %}
-main : $(DESCTEX) authlist
+$(main) : $(DESCTEX) authlist
 	latexmk -g -pdf  \
 	-pdflatex='openout_any=a pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
 # {% endraw %}
 
-tar : main
+tar : $(main)
 	mkdir -p ${tardir}
 	cp ${tarfiles} ${tardir} | true
 	cp ${outname}.pdf ${tardir}/${outname}.pdf
@@ -102,7 +106,7 @@ TARGETS := apj apjl prd prl mnras tex aastex61 emulateapj
 $(TARGETS): export style = $(@)
 $(TARGETS): export flag = \def\flag{$(@)}
 $(TARGETS):
-	$(MAKE) -e main
+	$(MAKE) -e $(main)
 	$(MAKE) -e copy
 	$(MAKE) -e tar
 # NB. the 'tex' target doesn't actually do anything in docswitch - make
@@ -189,9 +193,10 @@ new:
 	@echo " "
 
 # Over-write this Makefile with the latest version:
-upgrade:
-	@echo "\nDownloading the latest version of the Makefile: \n"
-	curl -s -S -o Makefile ${baseurl}/Makefile
-	@echo "\nUpgrading version of mkauthlist: \n"
-	pip install mkauthlist --upgrade --no-deps
-	@echo "\nNow get the latest styles and templates with\n\n    make update\n    make templates\n"
+# Why would we include this when a safe option already exists?
+# upgrade:
+# 	@echo "\nDownloading the latest version of the Makefile: \n"
+# 	curl -s -S -o Makefile ${baseurl}/Makefile
+# 	@echo "\nUpgrading version of mkauthlist: \n"
+# 	pip install mkauthlist --upgrade --no-deps
+# 	@echo "\nNow get the latest styles and templates with\n\n    make update\n    make templates\n"
