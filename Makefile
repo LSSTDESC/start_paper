@@ -16,7 +16,7 @@ main ?= main
 outname ?= $(notdir $(shell pwd))
 
 #ifeq ($(default), {{ cookiecutter.default_format }})
-style ?= tex
+style ?= lsstdescnote
 #else
 # style=${default}
 #endif
@@ -62,7 +62,7 @@ maketargets := all copy touch min tar authlist tidy clean template update new up
 # In future, we could think of using `make` to eg run the ipynb
 # notebook and make PDF from the output, but this has not been
 # implemented yet.
-all: export flag = \def\flag{${style}}
+main: export flag = \def\flag{${style}}
 all: main copy
 
 copy:
@@ -78,10 +78,7 @@ $(DESCTEX):
 #http://journals.aas.org/authors/aastex/linux.html
 #change the compiler call to allow a "." file
 # {% raw %}
-ifeq ($(style),tex)
-main: $(DESCTEX)
-endif
-main : authlist
+main : $(DESCTEX) authlist
 	latexmk -g -pdf  \
 	-pdflatex='openout_any=a pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
