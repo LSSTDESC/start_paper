@@ -147,23 +147,23 @@ baseurl=https://raw.githubusercontent.com/LSSTDESC/start_paper/master
 
 update:
 	cd $(DESCTEX) && git pull
-	#@echo "\nOver-writing LaTeX style files with the latest versions: \n"
-	#@mkdir -p .logos figures texmf/styles texmf/bib
-	#$(MAKE) $(UPDATES)
+#@echo "\nOver-writing LaTeX style files with the latest versions: \n"
+#@mkdir -p .logos figures texmf/styles texmf/bib
+#$(MAKE) $(UPDATES)
 
 # Get fresh copies of the templates etc, for reference:
 # It is a bad idea to make these phony targets
 
-# TEMPLATES=\
-# authors.csv \
-# main.ipynb \
-# main.md \
-# main.rst \
-# main.tex \
-# main.bib \
-# .metadata.json \
-# .travis.yml \
-# figures/example.png
+TEMPLATES:=\
+authors.csv \
+main.ipynb \
+main.md \
+main.rst \
+main.tex \
+main.bib \
+.metadata.json \
+.travis.yml 
+#figures/example.png
 # #acknowledgments.tex \
 
 # .PHONY: $(TEMPLATES)
@@ -171,12 +171,15 @@ update:
 # 	curl -s -S -o templates/$(@) ${baseurl}/$(@)
 # 	@echo " "
 
-# templates:
-# 	@echo "\nDownloading the latest versions of the template files, for reference: \n"
-# 	@mkdir -p templates
-# 	$(MAKE) $(TEMPLATES)
-# 	$(MAKE) new
-# 	ls -a templates/*
+gettemplates := $(foreach t,$(TEMPLATES),curl -s -S -o templates/$(t) ${baseurl}/$(t); )
+
+templates:
+	@echo "\nDownloading the latest versions of the template files, for reference: \n"
+	@mkdir -p templates
+	$(gettemplates)
+	$(MAKE) new
+	ls -a templates/*
+#$(MAKE) $(TEMPLATES)
 
 # Get a template copy of the latest Makefile, for reference:
 new:
