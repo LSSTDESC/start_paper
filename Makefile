@@ -34,6 +34,7 @@ DESCTEXORIGIN := git@github.com:LSSTDESC/desc-tex.git
 # LATEX environment variables
 export TEXINPUTS:=./$(DESCTEX)/styles/:./tables/:
 export BSTINPUTS:=./$(DESCTEX)/bst/:
+export BIBINPUTS:=./$(DESCTEX)/bib/:
 
 # LaTeX journal class switcher flags
 # apj=\def\flag{apj}
