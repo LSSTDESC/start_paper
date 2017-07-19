@@ -21,6 +21,13 @@ style ?= lsstdescnote
 # style=${default}
 #endif
 
+# mkauthlist doesn't recognize lsstdescnote as a style, so tell it to do something generic
+ifeq ($(style),lsstdescnote)
+mastyle = tex
+else
+mastyle = $(style)
+endif
+
 DESCTEX := desc-tex
 DESCTEXORIGIN := git@github.com:LSSTDESC/desc-tex.git
 
@@ -98,7 +105,7 @@ tar : $(main)
 authlist: authors.tex
 authors.tex : authors.csv
 	pip install --upgrade mkauthlist
-	mkauthlist -j ${style} -f -c "LSST Dark Energy Science Collaboration" \
+	mkauthlist -j ${mastyle} -f -c "LSST Dark Energy Science Collaboration" \
 		--cntrb contributions.tex authors.csv authors.tex
 
 # http://stackoverflow.com/q/8028314/
