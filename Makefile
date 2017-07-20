@@ -60,12 +60,12 @@ tarfiles = $(figures) $(tables) $(styles) $(bibs) $(source)
 
 
 
-maketargets := all authlist clean copy help $(main) new update tar templates tidy touch
+maketargets := all authlist clean copy help $(main) update tar templates tidy touch
 .PHONY: $(maketargets)
 
 styleopts := apj apjl emulateapj lsstdescnote mnras prd prl
 help:
-	@echo "Usage: make [style=lsstdescnote] <target(s)>\n Possible targets: $(maketargets)\n  all: $(main) copy\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy compiled latex to <name of this directory>.pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  new: download latest version of this Makefile to templates/\n  update: update desc-tex repo\n  tar: tar up source files\n  templates: download lates templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n Options for style: $(styleopts)\n  (Anything else results in generic latex)"
+	@echo "Usage: make [style=lsstdescnote] <target(s)>\n Possible targets: $(maketargets)\n  all: $(main) copy\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy compiled latex to <name of this directory>.pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist and templates repo\n  tar: tar up source files\n  templates: download lates templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n Options for style: $(styleopts)\n  (Anything else results in generic latex)"
 
 
 # Interpret `make` with no target as `make tex` (a latex Note).
@@ -159,8 +159,12 @@ baseurl=https://raw.githubusercontent.com/LSSTDESC/start_paper/master
 # 	curl -s -S -o $(@) ${baseurl}/$(@)
 # 	@echo " "
 
-update:
+update: templates
+	@echo Updating desc-tex
 	cd $(DESCTEX) && git pull
+	@echo
+	@echo Updating mkauthlist
+	pip install --upgrade mkauthlist
 #@echo "\nOver-writing LaTeX style files with the latest versions: \n"
 #@mkdir -p .logos figures texmf/styles texmf/bib
 #$(MAKE) $(UPDATES)
@@ -175,6 +179,7 @@ main.md \
 main.rst \
 main.tex \
 main.bib \
+Makefile \
 .metadata.json \
 .travis.yml 
 #figures/example.png
@@ -191,16 +196,19 @@ templates:
 	@echo "\nDownloading the latest versions of the template files, for reference: \n"
 	@mkdir -p templates
 	$(gettemplates)
-	$(MAKE) new
-	ls -a templates/*
+	@echo
+	@echo templates/ listing:
+	@ls -a templates/*
+	@for f in $(TEMPLATES); do diff -q $$f templates/$$f; true; done
 #$(MAKE) $(TEMPLATES)
+#	$(MAKE) new
 
 # Get a template copy of the latest Makefile, for reference:
-new:
-	@echo "\nDownloading the latest version of the Makefile, for reference: \n"
-	@mkdir -p templates
-	curl -s -S -o templates/Makefile ${baseurl}/Makefile
-	@echo " "
+# new:
+# 	@echo "\nDownloading the latest version of the Makefile, for reference: \n"
+# 	@mkdir -p templates
+# 	curl -s -S -o templates/Makefile ${baseurl}/Makefile
+# 	@echo " "
 
 # Over-write this Makefile with the latest version:
 # Why would we include this when a safe option already exists?
