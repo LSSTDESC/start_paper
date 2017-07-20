@@ -31,6 +31,19 @@ endif
 DESCTEX := desc-tex
 DESCTEXORIGIN := git@github.com:LSSTDESC/desc-tex.git
 
+localpip ?= F
+PIPOPTS = --upgrade-strategy only-if-needed
+ifeq ($(localpip),T)
+MKAUTHBIN := bin/mkauthlist
+MKAUTH := PYTHONPATH=$$(ls -d lib/python*/site-packages 2>/dev/null | head -n1):$$PYTHONPATH $(MKAUTHBIN)
+PIPOPTS += --install-option="--prefix=$(PWD)"
+GETMKAUTH := [ -e $(MKAUTHBIN) ] || pip install $(PIPOPTS) mkauthlist
+else
+MKAUTHBIN :=
+MKAUTH := mkauthlist 
+GETMKAUTH := pip list 2>/dev/null | grep -q mkauthlist || pip install $(PIPOPTS) mkauthlist
+endif
+
 # LATEX environment variables
 export TEXINPUTS:=./$(DESCTEX)/styles/:./tables/:
 export BSTINPUTS:=./$(DESCTEX)/bst/:
@@ -65,7 +78,7 @@ maketargets := all authlist clean copy help $(main) update tar templates tidy to
 
 styleopts := apj apjl emulateapj lsstdescnote mnras prd prl
 help:
-	@echo "Usage: make [style=lsstdescnote] <target(s)>\n Possible targets: $(maketargets)\n  all: $(main) copy\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy compiled latex to <name of this directory>.pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist and templates repo\n  tar: tar up source files\n  templates: download lates templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n Options for style: $(styleopts)\n  (Anything else results in generic latex)"
+	@echo "Usage: make [style=lsstdescnote] [localpip=F] <target(s)>\n Possible targets: $(maketargets)\n  all: $(main) copy\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy compiled latex to <name of this directory>.pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist and templates repo\n  tar: tar up source files\n  templates: download lates templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n Options for style: $(styleopts)\n  (Anything else results in generic latex)\n Options for localpip: T or F. Set to T to install mkauthlist in this directory rather than systemwide"
 
 
 # Interpret `make` with no target as `make tex` (a latex Note).
@@ -105,8 +118,8 @@ tar : $(main)
 
 authlist: authors.tex
 authors.tex : authors.csv
-	pip list 2>/dev/null | grep -q mkauthlist || pip install mkauthlist
-	mkauthlist -j ${mastyle} -f -c "LSST Dark Energy Science Collaboration" \
+	$(GETMKAUTH)
+	$(MKAUTH) -j ${mastyle} -f -c "LSST Dark Energy Science Collaboration" \
 		--cntrb contributions.tex authors.csv authors.tex
 #	pip install --upgrade mkauthlist
 
@@ -164,7 +177,7 @@ update: templates
 	cd $(DESCTEX) && git pull
 	@echo
 	@echo Updating mkauthlist
-	pip install --upgrade mkauthlist
+	pip install --upgrade $(PIPOPTS) mkauthlist
 #@echo "\nOver-writing LaTeX style files with the latest versions: \n"
 #@mkdir -p .logos figures texmf/styles texmf/bib
 #$(MAKE) $(UPDATES)
