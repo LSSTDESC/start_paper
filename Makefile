@@ -88,6 +88,7 @@ help:
 # notebook and make PDF from the output, but this has not been
 # implemented yet.
 $(main): export flag = \def\flag{${style}}
+envflag = \\def\\flag{${style}}
 all: $(main) copy
 
 copy:
@@ -104,7 +105,8 @@ $(DESCTEX):
 #change the compiler call to allow a "." file
 # {% raw %}
 $(main) : $(DESCTEX) authlist
-	latexmk -g -pdf  \
+	STYLEFLAG=$(envflag) latexmk $(main)
+#	latexmk -g -pdf  \
 	-pdflatex='openout_any=a pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
 # {% endraw %}
