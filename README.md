@@ -34,3 +34,14 @@ will download the latest templates and Makefile to a `templates/` directory (i.e
 make update
 ```
 will do the same, and will also update `desc-tex` and `mkauthlist`.
+
+## Contributors to `start_paper`
+
+People developing this project:
+* Phil Marshall [(@drphilmarshall)](https://github.com/drphilmarshall)
+* Alex Drlica-Wagner [(@kadrlica)](https://github.com/kadrlica)
+* Adam Mantz [(@abmantz)](https://github.com/abmantz)
+* Heather Kelly [(@heather999)](https://github.com/heather999)
+* Jonathan Sick [(@jonathansick)](https://github.com/jonathansick)
+
+This is open source software, available under the BSD license. If you are interested in this project, please do drop us a line via the hyperlinked contact names above, or by [writing us an issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues).
