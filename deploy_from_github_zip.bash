@@ -10,8 +10,9 @@ repo=${2-LSSTDESC/start_paper}
 branch=${3-master}
 
 [ -e $project ] && {
-    echo "$project already exists; aborting"
-    exit 2
+    echo "$project/ already exists! If you want to possibly overwrite things in this folder, press enter; otherwise, this is your opportunity to Crtl-C."
+    read
+    #exit 2
 }
 
 url=https://github.com/$repo/archive/$branch.zip
@@ -24,5 +25,7 @@ wget -O $tmpdir/$zipfile $url && \
     cd $tmpdir && \
     unzip $zipfile && \
     rm -fv $zipfile && \
-    mv -v $dir $wd/$project && \
-    cd $wd && rmdir $tmpdir
+    mkdir -p $wd/$project && \
+    mv -v $dir/* $wd/$project/ && \
+    cd $wd && \
+    rmdir $tmpdir
