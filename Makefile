@@ -76,9 +76,9 @@ tarfiles = $(figures) $(tables) $(styles) $(bibs) $(source)
 maketargets := all authlist clean copy help $(main) update tar templates tidy touch
 .PHONY: $(maketargets)
 
-styleopts := apj apjl emulateapj lsstdescnote mnras prd prl
+styleopts := aastex61 apj apjl emulateapj lsstdescnote mnras prd prl tex 
 help:
-	@echo "Usage: make [style=lsstdescnote] [localpip=F] <target(s)>\n Possible targets: $(maketargets)\n  all: $(main) copy\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy compiled latex to <name of this directory>.pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist and templates repo\n  tar: tar up source files\n  templates: download lates templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n Options for style: $(styleopts)\n  (Anything else results in generic latex)\n Options for localpip: T or F. Set to T to install mkauthlist in this directory rather than systemwide"
+	@echo "Usage: make [style=lsstdescnote] [localpip=F] <target(s)>\n Possible targets: $(maketargets) <style>\n  all: equivalent to 'make $(main) copy'\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy $(main).pdf to $(outname).pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist, and templates repo\n  tar: tar up latex source files to $(outname).tar.gz\n  templates: download latest templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n  <style>: equivalent to 'make style=<style> $(main) copy tar' (see style option)\n Options for style: $(styleopts)\n  (Anything else results in generic latex)\n Options for localpip: T or F. Set to T to install mkauthlist in this directory rather than systemwide"
 
 
 # Interpret `make` with no target as `make tex` (a latex Note).
@@ -127,10 +127,10 @@ authors.tex : authors.csv
 
 
 # http://stackoverflow.com/q/8028314/
-TARGETS := apj apjl prd prl mnras tex aastex61 emulateapj
-$(TARGETS): export style = $(@)
-$(TARGETS): export flag = \def\flag{$(@)}
-$(TARGETS):
+.PHONY: $(styleopts)
+$(styleopts): export style = $(@)
+$(styleopts): export flag = \def\flag{$(@)}
+$(styleopts):
 	$(MAKE) -e $(main)
 	$(MAKE) -e copy
 	$(MAKE) -e tar
