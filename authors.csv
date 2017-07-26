@@ -29,4 +29,5 @@
 #
 # ======================================================================
 Lastname,Firstname,Authorname,AuthorType,Affiliation,Contribution,Email
-"Author", "Ann","A.~N.~Author",Contact,"Affiliation","Contribution","ann.author@dev.null"
+Marshall,Phil,P.~Marshall,Contributor,"SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA","Initiated and led project.",dr.phil.marshall@gmail.com
+Marshall,Phil,P.~Marshall,Contributor,"Kavli Institute for Particle Astrophysics \& Cosmology, P. O. Box 2450, Stanford University, Stanford, CA 94305, USA","Initiated and led project, designed templates, tested system.",dr.phil.marshall@gmail.com
