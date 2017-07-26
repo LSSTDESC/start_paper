@@ -21,6 +21,10 @@ style ?= lsstdescnote
 # style=${default}
 #endif
 
+# 'note' shall be an alias for 'lsstdescnote'
+ifeq ($(style),note)
+style = lsstdescnote
+endif
 # mkauthlist doesn't recognize lsstdescnote as a style, so tell it to do something generic
 ifeq ($(style),lsstdescnote)
 mastyle = tex
@@ -86,7 +90,7 @@ DIFF = $(DIFPRE)$(THISBRANCH)--$(BASEBRANCH)
 maketargets := all authlist clean copy diff help $(main) update tar templates tidy touch
 .PHONY: $(maketargets)
 
-styleopts := aastex61 apj apjl emulateapj lsstdescnote mnras prd prl tex 
+styleopts := aastex61 apj apjl emulateapj lsstdescnote mnras note prd prl tex 
 help:
 	@echo "Usage: make [style=lsstdescnote] [localpip=F] <target(s)>\n Possible targets: $(maketargets) <style>\n  all: equivalent to 'make $(main) copy'\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy $(main).pdf to $(outname).pdf\n  diff: if we're in a git repo, use latexdiff to compare the current $(main).tex vs the $(BASEBRANCH) branch, and attempt to compile to $(DIFF).pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist, and templates repo\n  tar: tar up latex source files to $(outname).tar.gz\n  templates: download latest templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n  <style>: equivalent to 'make style=<style> $(main) copy tar' (see style option)\n Options for style: $(styleopts)\n  (Anything else results in generic latex)\n Options for localpip: T or F. Set to T to install mkauthlist in this directory rather than systemwide"
 
