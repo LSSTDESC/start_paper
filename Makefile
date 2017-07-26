@@ -217,9 +217,9 @@ main.md \
 main.rst \
 main.tex \
 main.bib \
-Makefile \
-.metadata.json \
-.travis.yml 
+Makefile
+#.metadata.json \
+#.travis.yml 
 #figures/example.png
 # #acknowledgments.tex \
 
