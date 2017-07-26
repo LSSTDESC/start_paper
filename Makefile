@@ -71,14 +71,24 @@ source = $(main).{tex,bbl,bib} $(DESCTEX)/bib/lsstdesc.bib $(DESCTEX)/ack/*.tex 
 
 tarfiles = $(figures) $(tables) $(styles) $(bibs) $(source)
 
+# prefix for difference files
+DIFPRE ?= diff_
+# git repo branch to compare changes against
+BASEBRANCH ?= master
+# git repo branch we are compiling
+THISBRANCH := $(shell git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' | tr -d ' ')
+# temp file for the version to compare against
+DRAFT = $(main).$(BASEBRANCH)
+# base for difference files to generate
+DIFF = $(DIFPRE)$(THISBRANCH)--$(BASEBRANCH)
 
 
-maketargets := all authlist clean copy help $(main) update tar templates tidy touch
+maketargets := all authlist clean copy diff help $(main) update tar templates tidy touch
 .PHONY: $(maketargets)
 
 styleopts := aastex61 apj apjl emulateapj lsstdescnote mnras prd prl tex 
 help:
-	@echo "Usage: make [style=lsstdescnote] [localpip=F] <target(s)>\n Possible targets: $(maketargets) <style>\n  all: equivalent to 'make $(main) copy'\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy $(main).pdf to $(outname).pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist, and templates repo\n  tar: tar up latex source files to $(outname).tar.gz\n  templates: download latest templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n  <style>: equivalent to 'make style=<style> $(main) copy tar' (see style option)\n Options for style: $(styleopts)\n  (Anything else results in generic latex)\n Options for localpip: T or F. Set to T to install mkauthlist in this directory rather than systemwide"
+	@echo "Usage: make [style=lsstdescnote] [localpip=F] <target(s)>\n Possible targets: $(maketargets) <style>\n  all: equivalent to 'make $(main) copy'\n  authlist: use mkauthlist to generate latex author/affiliation listing\n  clean: remove latex temporary files AND compiled outputs\n  copy: copy $(main).pdf to $(outname).pdf\n  diff: if we're in a git repo, use latexdiff to compare the current $(main).tex vs the $(BASEBRANCH) branch, and attempt to compile to $(DIFF).pdf\n  help: what you're looking at\n  $(main): compile $(main).tex\n  update: update desc-tex, mkauthlist, and templates repo\n  tar: tar up latex source files to $(outname).tar.gz\n  templates: download latest templates to templates/\n  tidy: delete latex temporary files\n  touch: touch $(main).tex to force a recompile\n  <style>: equivalent to 'make style=<style> $(main) copy tar' (see style option)\n Options for style: $(styleopts)\n  (Anything else results in generic latex)\n Options for localpip: T or F. Set to T to install mkauthlist in this directory rather than systemwide"
 
 
 # Interpret `make` with no target as `make tex` (a latex Note).
@@ -110,6 +120,15 @@ $(main) : $(DESCTEX) authlist
 	-pdflatex='openout_any=a pdflatex %O -interaction=nonstopmode "${flag}\input{%S}"'  \
 	${main}
 # {% endraw %}
+
+diff: $(DIFF).pdf
+$(DIFF).pdf: $(DIFF).tex
+	STYLEFLAG=$(envflag) latexmk $<
+$(DIFF).tex: $(DRAFT).tex $(main).tex
+	latexdiff --exclude-textcmd="multicolumn" $^ > $@
+$(DRAFT).tex:
+	git show $(BASEBRANCH):$(main).tex > $@
+
 
 tar : $(main)
 	mkdir -p ${tardir}
