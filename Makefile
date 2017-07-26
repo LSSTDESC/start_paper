@@ -171,7 +171,7 @@ clean: tidy
 
 # Update the tex styles etc:
 
-baseurl=https://raw.githubusercontent.com/LSSTDESC/start_paper/master
+baseurl=https://raw.githubusercontent.com/LSSTDESC/start_paper/deploy
 
 # UPDATES=\
 # texmf/bib/apj.bst \
