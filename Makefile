@@ -130,8 +130,11 @@ $(DIFF).pdf: $(DIFF).tex
 	STYLEFLAG=$(envflag) latexmk $<
 $(DIFF).tex: $(DRAFT).tex $(main).tex
 	latexdiff --exclude-textcmd="multicolumn" $^ > $@
+# this ensures that the version to latexdiff against is always updated
+.PHONY: $(DRAFT).tex
 $(DRAFT).tex:
-	git show $(BASEBRANCH):$(main).tex > $@
+	if git show $(BASEBRANCH):$(main).tex > $@; then true; else echo "\n\n'make diff' is intended to be used inside a git repository\n"; false; fi
+
 
 
 tar : $(main)
