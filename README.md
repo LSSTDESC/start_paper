@@ -6,7 +6,7 @@
 
 ## Starting your paper
 
-Download the contents of the `deploy` branch of the `start_paper` repository. We recommend downloading it as a ZIP file rather than cloning the repository; this simplifies the process of versioning your paper in its own repository, if you so desire. You can either do this manually by clicking "Clone or download" and then "Download ZIP" in GitHub (*while looking at the `deploy` branch*), or automatically by [downloading](https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash) and running [this BASH script](https://github.com/LSSTDESC/start_paper/blob/master/deploy_from_github_zip.bash), as in
+Download the contents of the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy) of the `start_paper` repository. We recommend downloading it as a ZIP file rather than cloning the repository; this simplifies the process of versioning your paper in its own repository, if you so desire. You can either do this manually by clicking "Clone or download" and then "Download ZIP" in GitHub (*while looking at the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy)*), or automatically by [downloading](https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash) and running [this BASH script](https://github.com/LSSTDESC/start_paper/blob/master/deploy_from_github_zip.bash), as in
 
 ```bash
 ./deploy_from_github_zip.bash MyNewPaper
