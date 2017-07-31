@@ -1,12 +1,12 @@
 
 # start_paper
-### Jumpstart your DESC paper or note
+### Jump-start your DESC paper or note
 
-`start_paper` is intended to make the process of starting to write a DESC paper or note, and later transforming notes into papers, as simple as possible.
+`start_paper` is intended to make the process of starting to write a DESC paper or note, and later transforming notes into papers, as simple as possible. `start_paper` attempts to play well with [`desc-tex`](https://github.com/LSSTDESC/desc-tex), a repository of latex support files for DESC papers, and [`mkauthlist`](https://github.com/kadrlica/mkauthlist), a Python package for generating author and contribution lists in latex format.
 
 ## Starting your paper
 
-Download the contents of the `start_paper` repository. We recommend downloading it as a ZIP file rather than cloning the repository; this simplifies the process of versioning your paper in its own repository, if you so desire. You can either do this manually with the "Clone or download" button in GitHub, or automatically by [downloading](https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash) and running [this BASH script](https://github.com/LSSTDESC/start_paper/blob/master/deploy_from_github_zip.bash), as in
+Download the contents of the `deploy` branch of the `start_paper` repository. We recommend downloading it as a ZIP file rather than cloning the repository; this simplifies the process of versioning your paper in its own repository, if you so desire. You can either do this manually by clicking "Clone or download" and then "Download ZIP" in GitHub (*while looking at the `deploy` branch*), or automatically by [downloading](https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash) and running [this BASH script](https://github.com/LSSTDESC/start_paper/blob/master/deploy_from_github_zip.bash), as in
 
 ```bash
 ./deploy_from_github_zip.bash MyNewPaper
@@ -14,12 +14,15 @@ Download the contents of the `start_paper` repository. We recommend downloading 
 
 This will download and unzip the `start_paper` files to a new folder called `MyNewPaper/`.
 
-`start_paper` provides templates in various formats: [`Jupyter Notebook`](https://ipython.org/notebook.html) (`main.ipynb`), [`Markdown`](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) (`main.md`), [`reStructuredText`](http://docutils.sourceforge.net/rst.html) (`main.rst`), and latex (`main.tex`). There is also a template [Google Doc](https://docs.google.com/document/d/1ERz_S02Uvc0QkapVx145PrYZT0CRJbkPMmY5T95uMkk/edit?usp=sharing).
+`start_paper` provides templates in various formats: [Jupyter Notebook](https://ipython.org/notebook.html) (`main.ipynb`), [Markdown](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) (`main.md`), [reStructuredText](http://docutils.sourceforge.net/rst.html) (`main.rst`), and [LaTeX](http://www.latex-project.org/) (`main.tex`). There is also a template [Google Doc](https://docs.google.com/document/d/1ERz_S02Uvc0QkapVx145PrYZT0CRJbkPMmY5T95uMkk/edit?usp=sharing) than lives in the cloud.
+
+For tips on writing papers in each of these formats, see the corresponding `example.*` files in this repository. (Note that these are not included in the downloaded files.)
 
 ## Building your paper
 
-At present, only latex documents require/benefit from the Makefile. `make` or `make help` will display basic options; more detailed documentation on using the Makefile and on writing papers/notes in latex and other formats will be provided in another document (started, appropriately enough, with `start_paper`).
+At present, only latex documents require/benefit from the Makefile. `make main` compiles the latex template, and `make` or `make help` will display the options. See also "Detailed `make` usage", below.
 
+Note that all non-latex formats, and latex with the Note class, point to a DESC header logo that is distributed with [`desc-tex`](https://github.com/LSSTDESC/desc-tex). If you see a missing image error at the top of your Markdown file, for example, you need to `make desc-tex` to download the logo file.
 
 ## Updating `start_paper` content
 
@@ -33,7 +36,38 @@ will download the latest templates and Makefile to a `templates/` directory (i.e
 ```
 make update
 ```
-will do the same, and will also update `desc-tex` and `mkauthlist`.
+will do the same, and will also attempt to update [`desc-tex`](https://github.com/LSSTDESC/desc-tex) and [`mkauthlist`](https://github.com/kadrlica/mkauthlist).
+
+## Everything breaks because I can't install `mkauthlist`!
+
+Try passing `make` the `localpip=T` flag, as in `make localpip=T main`. This will instead download and run `mkauthlist` in the current working directory instead of trying to install it. The default value of `localpip` can be changed in `Makefile`; look for the line `localpip ?= F`.
+
+## Using Overleaf
+
+## Converting non-latex formats to PDF
+
+At present, the facilities exist to convert these formats to PDF, though not with a layout consistent with compiled latex DESC Notes (e.g. with images and captions placed exactly rather than "floated" to the top of the page). Most require [Pandoc](http://pandoc.org/).
+
+* Jupyter notebook:
+* Markdown:
+* reStructuredText:
+* Google Doc: Export from Google Docs using File... Download as... Web Page (.html, zipped). Convert from HTML to PDF with Pandoc.
+
+## Detailed `make` usage
+
+`make` or `make help` will display the possible `make` targets, of which there are many. Lots of defaults, such as the "main" naming for targets and the default latex style, can be changed in `Makefile`.
+
+`make main` tries to compile `main.tex` into `main.pdf`. `main.tex` internally depends on `main.bib`, where you should put your own `bibtex` entries, `authors.tex`, and `contributions.tex`.
+
+You can manually enter the appropriate `\author` command(s) in `authors.tex`, and text in `contributions.tex`. Alternatively, these two files can be generated automatically using `mkauthlist`, based on information in `authors.csv`. `make` will attempt to do this automatically when compiling if `authors.csv` is newer (modified more recently) than `authors.tex`. Specifically, it will try to
+1. download and install `mkauthlist`, and
+2. run `mkauthlist`, overwriting `authors.tex` and `contributions.tex`.
+
+The first step can cause problems if you do not have write access to your system-wide Python library files. See "Everything breaks because I can't install `mkauthlist`!" above.
+
+By default, latex will compile using the LSST-DESC Note class. To use another class, pass the `style` argument to `make`, as in `make style=apj main`. Note that the output of `mkauthlist` depends on the journal style, so you should delete `authors.tex` when changing style to avoid incompatibilities. For convenience, you could also change the default style in the `Makefile`; look for the line `style ?= lsstdescnote`.
+
+There's more - write us issues if you find that the `make` options are insufficiently explained by `make help`, or if you encounter other problems.
 
 ## Contributors to `start_paper`
 
