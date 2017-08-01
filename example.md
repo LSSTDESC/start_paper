@@ -1,4 +1,4 @@
-![](./texmf/logos/header.png)
+![](./header.png)
 
 # Write Title Here
 
