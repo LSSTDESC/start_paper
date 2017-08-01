@@ -226,6 +226,8 @@ Makefile
 #figures/example.png
 # #acknowledgments.tex \
 
+ALLTEMPLATES := $(TEMPLATES) header.png
+
 # .PHONY: $(TEMPLATES)
 # $(TEMPLATES):
 # 	curl -s -S -o templates/$(@) ${baseurl}/$(@)
@@ -237,10 +239,11 @@ templates:
 	@echo "\nDownloading the latest versions of the template files, for reference: \n"
 	@mkdir -p templates
 	$(gettemplates)
+	curl -s -S -o templates/header.png https://raw.githubusercontent.com/LSSTDESC/desc-tex/master/logos/header.png
 	@echo
 	@echo templates/ listing:
 	@ls -a templates/*
-	@for f in $(TEMPLATES); do diff -q $$f templates/$$f; true; done
+	@for f in $(ALLTEMPLATES); do diff -q $$f templates/$$f; true; done
 #$(MAKE) $(TEMPLATES)
 #	$(MAKE) new
 

@@ -1,6 +1,6 @@
-.. figure:: ./desc-tex/logos/header.png
+.. figure:: ./header.png
   :name: header
-  :target: ./desc-tex/logos/header.png
+  :target: ./header.png
   :align: center
 
 ========================================================================
