@@ -240,7 +240,7 @@ templates:
 	@echo "\nDownloading the latest versions of the template files, for reference: \n"
 	@mkdir -p templates
 	$(gettemplates)
-	curl -f -s -S -o templates/header.png https://raw.githubusercontent.com/LSSTDESC/desc-tex/master/logos/header.png
+	curl -f -s -S -o templates/header.png https://raw.githubusercontent.com/LSSTDESC/desc-tex/master/logos/header.png || true
 	@echo
 	@echo templates/ listing:
 	@ls -a templates/*
