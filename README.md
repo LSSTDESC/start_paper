@@ -16,7 +16,7 @@ This will download and unzip the `start_paper` files to a new folder called `MyN
 
 `start_paper` provides templates in various formats: [Jupyter Notebook](https://ipython.org/notebook.html) (`main.ipynb`), [Markdown](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) (`main.md`), [reStructuredText](http://docutils.sourceforge.net/rst.html) (`main.rst`), and [LaTeX](http://www.latex-project.org/) (`main.tex`). There is also a template [Google Doc](https://docs.google.com/document/d/1ERz_S02Uvc0QkapVx145PrYZT0CRJbkPMmY5T95uMkk/edit?usp=sharing) than lives in the cloud.
 
-For tips on writing papers in each of these formats, see the corresponding `example.*` files in this repository. (Note that these are not included in the downloaded files.)
+For tips on writing papers in each of these formats, see the corresponding `example.*` files in this repository (note that these are not included in the downloaded files) or [here](https://docs.google.com/document/d/1WaGmnG67Ziajo6fBD3Y9HR4YkN2itMmzA549i-sbCc8/edit?usp=sharing) in the case of the Google Doc format.
 
 ## Building your paper
 
