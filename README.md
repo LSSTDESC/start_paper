@@ -1,70 +1,80 @@
+
 # start_paper
+### Jump-start your DESC paper or note
 
-Use `cookiecutter` to make a folder containing everything you need to start writing an LSST DESC paper (either a journal article or a Note). This follows Jonathan Sick's [`lsst_technote_bootstrap`](https://github.com/lsst-sqre/lsst-technote-bootstrap) method, albeit with a simpler set-up.
+`start_paper` is intended to make the process of starting to write a DESC paper or note, and later transforming notes into papers, as simple as possible. `start_paper` attempts to play well with [`desc-tex`](https://github.com/LSSTDESC/desc-tex), a repository of latex support files for DESC papers, and [`mkauthlist`](https://github.com/kadrlica/mkauthlist), a Python package for generating author and contribution lists in latex format.
 
-[![Build Status](https://travis-ci.org/DarkEnergyScienceCollaboration/start_paper.svg?branch=master)](https://travis-ci.org/DarkEnergyScienceCollaboration/start_paper)
+## Starting your paper
 
-## Why should I use this tool?
+Download the contents of the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy) of the `start_paper` repository. We recommend downloading it as a ZIP file rather than cloning the repository; this simplifies the process of versioning your paper in its own repository, if you so desire. You can either do this manually by clicking "Clone or download" and then "Download ZIP" in GitHub (*while looking at the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy)*), or automatically by [downloading](https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash) and running [this BASH script](https://github.com/LSSTDESC/start_paper/blob/master/deploy_from_github_zip.bash), as in
 
-1. It'll save you some paper set-up time.
-2. It'll help you comply with the LSST DESC Publication Policy, which places some requirements on papers to state the contributions of its authors.
-3. It'll save you some writing time, by automagically constructing the author list and acknowledgments, and getting the latex styling right,  for you.
-
-## How do I use it?
-
-You will need to install `cookiecutter`:
-```
-pip install cookiecutter
-```
-Then just do:
-```
-cookiecutter https://github.com/DarkEnergyScienceCollaboration/start_paper.git
-```
-This will ask you some questions. Here's an example session:
-```
-author [Initial author]: Phil Marshall
-affiliation [Initial author's affiliation]: SLAC National Accelerator Laboratory, Menlo Park, CA 94025
-email [Initial author's email address]: pjm@slac.stanford.edu
-title [The Title of This Paper]: How to Start Writing an LSST DESC Paper
-description [A very brief description of your paper, for the folder's README. (Once you've typed this, you'll be asked for three more items:  the project repo name, a serial number (just choose 0000, it'll get changed later), and a short title (that doesn't contain the repo name). These will then be used to set the paper's folder name, for you to accept or modify. Finally, you'll be asked to choose your Note's format, from [tex/apj/mnras/prl/prd/ipynb/md/rst]. You can always change your mind later, and it's easy to convert a tex Note into a journal paper with the start_paper make command.]: A short paper describing the \texttt{start\_paper} project, including the \texttt{cookiecutter} mechanism and the various templates.
-repo_name [ProjectName]: start_paper
-serial_number [0000]: 0000
-short_title [paper_title]: intro
-folder_name [desc-0000-start_paper-intro]:
-default_format [tex]: tex
+```bash
+./deploy_from_github_zip.bash MyNewPaper
 ```
 
+This will download and unzip the `start_paper` files to a new folder called `MyNewPaper/`.
 
-The folder that is then produced (silently!) will have the `folder_name` that you entered, and it will contain several pre-configured template files. For LSST DESC Notes, you have a range of format choices available to you: `md`, `rst`, `ipynb` and `tex`.
+`start_paper` provides templates in various formats: [Jupyter Notebook](https://ipython.org/notebook.html) (`main.ipynb`), [Markdown](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) (`main.md`), [reStructuredText](http://docutils.sourceforge.net/rst.html) (`main.rst`), and [LaTeX](http://www.latex-project.org/) (`main.tex`). There is also a template [Google Doc](https://docs.google.com/document/d/1ERz_S02Uvc0QkapVx145PrYZT0CRJbkPMmY5T95uMkk/edit?usp=sharing) than lives in the cloud.
 
-For latex journal papers, we provide a number of style files for convenience, as well as some useful macros. Just choose a format (`apj`, `apjl`, `mnras`, `prd`, `prl`, `tex`, `md`, `rst`, `ipynb`) and start writing in that file! Templates for all formats are provided, so you can switch to a different one at any time. For example, your `default_format` might be `tex`, but `make apjl` will produce a PDF of your note using the ApJL style file.
+For tips on writing papers in each of these formats, see the corresponding `example.*` files in this repository (note that these are not included in the downloaded files) or [here](https://docs.google.com/document/d/1WaGmnG67Ziajo6fBD3Y9HR4YkN2itMmzA549i-sbCc8/edit?usp=sharing) in the case of the Google Doc format.
 
-> For now, `make ipynb` still causes the `main.tex` file to be compiled. In future, we'll enable compilation of PDF or HTML from IPython notebooks.
+## Building your paper
 
-Don't forget to `git add` and `git commit` the files you edit, in the usual way. You might want to delete the templates you don't use - although if you think you might one day want to upgrade from markdown to latex, or from a Note to a journal article, you could keep those files around.
+At present, only latex documents require/benefit from the Makefile. `make main` compiles the latex template, and `make` or `make help` will display the options. See also "Detailed `make` usage", below.
 
-## What does it do about author lists, contributions etc?
+Note that all non-latex formats, and latex with the Note class, point to a DESC header logo that is distributed with [`desc-tex`](https://github.com/LSSTDESC/desc-tex). If you see a missing image error at the top of your Markdown file, for example, you need to `make desc-tex` to download the logo file.
 
-`make` generates two new latex files, an author list in the appropriate style
-in `authors.tex`, and a simple listing of author contributions for the
-acknowledgements in `contributions.tex`. This is carried out using the python
-program [`mkauthlist`](https://github.com/DarkEnergySurvey/mkauthlist) which
-the `Makefile` will attempt to install for you. This feature is somewhat
-experimental: if you hit problems, please [write us an
-issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues).
-To change the author list and contribution statements, please edit the
-`authors.csv` file. Eventually, this file will be automatically obtained from
-the LSST DESC Publication System, but for now we can track our own
-contributions manually in this way. If you are writing a Note in `markdown`,
-`rst` or `ipynb` format, you'll need to add your contribution list to your main
-file by hand.
+## Updating `start_paper` content
 
+From time to time, there may be updates to the latex support files provided by [`desc-tex`](https://github.com/LSSTDESC/desc-tex), or the `start_paper` templates or Makefile.
 
-## Licence, credits etc
+```
+make templates
+```
+will download the latest templates and Makefile to a `templates/` directory (i.e., not directly over-writing any files in the main directory).
+
+```
+make update
+```
+will do the same, and will also attempt to update [`desc-tex`](https://github.com/LSSTDESC/desc-tex) and [`mkauthlist`](https://github.com/kadrlica/mkauthlist).
+
+## Everything breaks because I can't install `mkauthlist`!
+
+Try passing `make` the `localpip=T` flag, as in `make localpip=T main`. This will instead download and run `mkauthlist` in the current working directory instead of trying to install it. The default value of `localpip` can be changed in `Makefile`; look for the line `localpip ?= F`.
+
+## Using Overleaf
+
+## Converting non-latex formats to PDF
+
+At present, the facilities exist to convert these formats to PDF, though not with a layout consistent with compiled latex DESC Notes (e.g. with images and captions placed exactly rather than "floated" to the top of the page). Most require [Pandoc](http://pandoc.org/).
+
+* Jupyter notebook:
+* Markdown:
+* reStructuredText:
+* Google Doc: Export from Google Docs using File... Download as... Web Page (.html, zipped). Convert from HTML to PDF with Pandoc.
+
+## Detailed `make` usage
+
+`make` or `make help` will display the possible `make` targets, of which there are many. Lots of defaults, such as the "main" naming for targets and the default latex style, can be changed in `Makefile`.
+
+`make main` tries to compile `main.tex` into `main.pdf`. `main.tex` internally depends on `main.bib`, where you should put your own `bibtex` entries, `authors.tex`, and `contributions.tex`.
+
+You can manually enter the appropriate `\author` command(s) in `authors.tex`, and text in `contributions.tex`. Alternatively, these two files can be generated automatically using `mkauthlist`, based on information in `authors.csv`. `make` will attempt to do this automatically when compiling if `authors.csv` is newer (modified more recently) than `authors.tex`. Specifically, it will try to
+1. download and install `mkauthlist`, and
+2. run `mkauthlist`, overwriting `authors.tex` and `contributions.tex`.
+
+The first step can cause problems if you do not have write access to your system-wide Python library files. See "Everything breaks because I can't install `mkauthlist`!" above.
+
+By default, latex will compile using the LSST-DESC Note class. To use another class, pass the `style` argument to `make`, as in `make style=apj main`. Note that the output of `mkauthlist` depends on the journal style, so you should delete `authors.tex` when changing style to avoid incompatibilities. For convenience, you could also change the default style in the `Makefile`; look for the line `style ?= lsstdescnote`.
+
+There's more - write us issues if you find that the `make` options are insufficiently explained by `make help`, or if you encounter other problems.
+
+## Contributors to `start_paper`
 
 People developing this project:
 * Phil Marshall [(@drphilmarshall)](https://github.com/drphilmarshall)
 * Alex Drlica-Wagner [(@kadrlica)](https://github.com/kadrlica)
+* Adam Mantz [(@abmantz)](https://github.com/abmantz)
 * Heather Kelly [(@heather999)](https://github.com/heather999)
 * Jonathan Sick [(@jonathansick)](https://github.com/jonathansick)
 

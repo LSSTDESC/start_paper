@@ -1,4 +1,19 @@
-*lsst-technote-bootstrap*
-*ipynb_checkpoints*
-templates
-.bib
+### Emacs
+\#*#
+\.#*
+*~
+
+### Latex
+*.fls
+*.aux
+*.log
+*.fdb_*
+*.out
+*.blg
+*.bbl
+*Notes.bib
+main.pdf
+main.tar.gz
+main.*.tex
+diff_*.tex
+

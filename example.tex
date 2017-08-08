@@ -28,13 +28,13 @@
 
 \begin{document}
 
-\title{ {{ cookiecutter.title }} }
+\title{Write Title Here}
 
 \maketitlepre
 
 \begin{abstract}
 
-{{ cookiecutter.description }}
+  Write abstract here.
 
 \end{abstract}
 
@@ -54,7 +54,7 @@ You can delete all this tutorial text whenever you like.
 
 You can easily switch between various \LaTeX\xspace styles for internal notes and peer reviewed journals.
 Documents can be compiled using the provided \code{Makefile}.
-The command \code{make} with no arguments compiles \code{main.tex} using the  \code{lsstdescnote.cls} style.
+The command \code{make main} compiles \code{main.tex} using the  \code{lsstdescnote.cls} style.
 If you want to upgrade your Note into a journal article, just choose a journal name, between \code{make apj} (ApJ preprint format), \code{make apjl} (which uses the \code{emulateapj} style), \code{make prd}, \code{make prl}, and \code{make mnras}.
 
 
@@ -63,14 +63,14 @@ If you want to upgrade your Note into a journal article, just choose a journal n
 \section{Commands}
 \label{sec:commands}
 
-There are a number of useful \LaTeX\xspace commands predefined in \code{macros.tex}.
+There are a number of useful \LaTeX\xspace commands provided by \code{desc-tex}, which should be automatically downloaded when \code{make} is invoked.
 Notice that the section labels are prefixed with \code{sec:} to allow the use of the \verb=\secref= command to reference a section (\ie, \secref{intro}).
 Figures can be referenced with the \verb=\figref= command, which assumes that the figure label is prefixed with \code{fig:}.
 In \figref{example} we show an example figure.
 You'll notice that the actual figure file is found in the \code{figures} directory.
 However, because we have specified this directory in our \verb=\graphicspath= we do not need to explicitly specify the path to the image.
 
-The \code{macros.tex} package also contains some conventional scientific units like \angstrom, \GeV, \Msun, etc. and some editorial tools for highlighting \FIXME{issues}, \CHECK{text to be checked}, \COMMENT{comments}, and \NEW{new additions}.
+The \code{desc-tex} macros also contain some conventional scientific units like \angstrom, \GeV, \Msun, etc. and some editorial tools for highlighting \FIXME{issues}, \CHECK{text to be checked}, \COMMENT{comments}, and \NEW{new additions}.
 
 
 % ----------------------------------------------------------------------
@@ -100,7 +100,7 @@ Equations appear as follows, and can be referred to as, for example, \eqnref{exa
 
 \begin{figure}
 \includegraphics[width=0.9\columnwidth]{example.png}
-\caption{An example figure: the LSST DESC logo, copied from \code{texmf/logos/desc-logo.png} into \code{figures/example.png}. \label{fig:example}}
+\caption{An example figure: the LSST DESC logo, copied from \code{desc-tex/logos/desc-logo.png} into \code{figures/example.png}. \label{fig:example}}
 \end{figure}
 
 
@@ -136,16 +136,26 @@ Here are some parting thoughts.
 
 \subsection*{Acknowledgments}
 
-Here is where you should add your specific acknowledgments, remembering that some standard thanks will be added via the \code{acknowledgments.tex} and \code{contributions.tex} files.
+Here is where you should add your specific acknowledgments, remembering that some standard thanks will be added via the \code{desc-tex/ack/*.tex} and \code{contributions.tex} files.
 
-\input{acknowledgments}
+%This paper has undergone internal review in the LSST Dark Energy Science Collaboration. % REQUIRED if true
 
-\input{contributions}
+\input{contributions} % Standard papers only: author contribution statements. For examples, see http://blogs.nature.com/nautilus/2007/11/post_12.html
+
+% This work used TBD kindly provided by Not-A-DESC Member and benefitted from comments by Another Non-DESC person.
+
+% Standard papers only: A.B.C. acknowledges support from grant 1234 from ...
+
+\input{desc-tex/ack/standard} % also available: key standard_short
+
+% This work used some telescope which is operated/funded by some agency or consortium or foundation ...
+
+% We acknowledge the use of An-External-Tool-like-NED-or-ADS.
 
 %{\it Facilities:} \facility{LSST}
 
 % Include both collaboration papers and external citations:
-\bibliography{lsstdesc,main}
+\bibliography{main,lsstdesc}
 
 \end{document}
 % ======================================================================

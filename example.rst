@@ -1,15 +1,15 @@
-.. figure:: ./.logos/header.png
+.. figure:: ./header.png
   :name: header
-  :target: ./.logos/header.png
+  :target: ./header.png
   :align: center
 
 ========================================================================
-The Title of This Paper
+Write Title Here
 ========================================================================
 
-*First Author, Second Author, Another Author*
+*A. N. Author*
 
-A very brief description of your paper, for the folder's README. (Once you've typed this, you'll be asked for two more items: a short_title and a serial_number, that will be used to set the paper's folder name. The serial number can be changed later, so choosing 0000 is fine.)
+Write abstract here.
 
 .. |date| date::
 This Note was generated on: |date|
@@ -112,7 +112,7 @@ To add figures, add the required image file (PNG, SVG or JPG preferred) to the `
 
   This is the figure caption: above we have the LSST DESC logo, in PNG format.
 
-And then the text continues. Note that GitHub ignores the image sizing commands when presenting ```reStructuredText`` <http://docs.lsst.codes/en/latest/development/docs/rst_styleguide.html>`_ format documents; sphinx might not.
+And then the text continues. Note that GitHub ignores the image sizing commands when presenting `reStructuredText <https://developer.lsst.io/docs/rst_styleguide.html>`_ format documents; sphinx might not.
 
 Tables
 ======
@@ -143,4 +143,4 @@ of (Sick 2016) <https://github.com/lsst-sqre/sqr-000/blob/master/index.rst>`_.
 Another nice example of an LSST technote is `(Wood-Vasey 2016) <http://dmtn-008.lsst.io/>`_ - again, the restructured text is
 visible `here <https://github.com/lsst-dm/dmtn-008/blob/master/index.rst>`_.
 
-For a guide to ``reStructuredText`` writing, please see the `LSST docs reST styleguide <http://docs.lsst.codes/en/latest/development/docs/rst_styleguide.html>`_. There are many other ``reStructuredText`` resources on the web, such as `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.
+For a guide to ``reStructuredText`` writing, please see the `LSST DM reST Style Suide <https://developer.lsst.io/docs/rst_styleguide.html>`_. There are many other ``reStructuredText`` resources on the web, such as `this cheatsheet <https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst>`_.

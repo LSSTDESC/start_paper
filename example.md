@@ -1,10 +1,10 @@
-![](./texmf/logos/header.png)
+![](./header.png)
 
-# {{ cookiecutter.title }}
+# Write Title Here
 
-*{{ cookiecutter.author }}*
+*A. N. Author*
 
-{{ cookiecutter.description }}
+Write abstract here.
 
 This Note was generated on: |date|
 
