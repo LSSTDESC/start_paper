@@ -53,6 +53,37 @@ Try passing `make` the `localpip=T` flag, as in `make localpip=T main`. This wil
 * Follow [these instructions](https://www.overleaf.com/help/230-how-do-i-push-a-new-project-to-overleaf-via-git) to push your project to a new Overleaf directory. (Note: you will probably want to use `git pull -s ours` to resolve conflicts in `main.tex`.)
 * Write on Overleaf!
 
+```
+# Deploy the start_paper template into a directory called "doc"
+wget https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash
+bash ./deploy_from_github_zip.bash doc
+
+# Need desc-tex to be public for this to work
+bash ./deploy_from_github_zip.bash doc/desc-tex LSSTDESC/desc-tex master
+
+cd doc
+
+# Initialize the repo
+git init
+git add .
+git commit -m "init repo"
+
+# Follow the overleaf instructions to create a new project
+# Add your new overleaf repo as a remote 
+# (be sure to use the link to your new repo, not the example below)
+git remote add overleaf https://git.overleaf.com/4551529zqsdhy
+
+# Grab from overleaf
+git checkout master
+git pull overleaf master --allow-unrelated-histories -s ours
+
+# Ignore overleaf changes
+git revert --mainline 1 HEAD
+
+# Push back to overleaf
+git push overleaf master
+```
+
 ## Converting non-latex formats to PDF
 
 At present, the facilities exist to convert these formats to PDF, though not with a layout consistent with compiled latex DESC Notes (e.g. with images and captions placed exactly rather than "floated" to the top of the page). Most require [Pandoc](http://pandoc.org/).
