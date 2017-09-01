@@ -9,7 +9,8 @@
 Download the contents of the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy) of the `start_paper` repository. We recommend downloading it as a ZIP file rather than cloning the repository; this simplifies the process of versioning your paper in its own repository, if you so desire. You can either do this manually by clicking "Clone or download" and then "Download ZIP" in GitHub (*while looking at the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy)*), or automatically by [downloading](https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash) and running [this BASH script](https://github.com/LSSTDESC/start_paper/blob/master/deploy_from_github_zip.bash), as in
 
 ```bash
-./deploy_from_github_zip.bash MyNewPaper
+wget https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash
+bash ./deploy_from_github_zip.bash MyNewPaper
 ```
 
 This will download and unzip the `start_paper` files to a new folder called `MyNewPaper/`.
@@ -43,6 +44,14 @@ will do the same, and will also attempt to update [`desc-tex`](https://github.co
 Try passing `make` the `localpip=T` flag, as in `make localpip=T main`. This will instead download and run `mkauthlist` in the current working directory instead of trying to install it. The default value of `localpip` can be changed in `Makefile`; look for the line `localpip ?= F`.
 
 ## Using Overleaf
+
+[Overleaf](https://www.overleaf.com/) is an online collaborative writing and publishing tool using LaTeX. It allows you to interactively edit latex documents using your browser. Under the hood, Overleaf is just a wrapper around a git repository, which can be directly cloned and editted if you desire. To use `start_paper` in Overleaf:
+
+* Follow the [instructions above](#starting-your-paper) to deploy your new paper.
+* Follow [these instructions](https://github.com/LSSTDESC/desc-tex/blob/master/README.md#standalone-deployment) to install a standalone version of [`desc-tex`](https://github.com/LSSTDESC/desc-tex) (Overleaf does not allow submodules).
+* Follow [these instructions](http://kbroman.org/github_tutorial/pages/init.html) to initialize a git repo for your paper.
+* Follow [these instructions](https://www.overleaf.com/help/230-how-do-i-push-a-new-project-to-overleaf-via-git) to push your project to a new Overleaf directory. (Note: you will probably want to use `git pull -s ours` to resolve conflicts in `main.tex`.)
+* Write on Overleaf!
 
 ## Converting non-latex formats to PDF
 
