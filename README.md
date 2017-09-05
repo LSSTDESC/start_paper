@@ -41,7 +41,7 @@ will do the same, and will also attempt to update [`desc-tex`](https://github.co
 
 ## Everything breaks because I can't install `mkauthlist`!
 
-Try passing `make` the `localpip=T` flag, as in `make localpip=T main`. This will instead download and run `mkauthlist` in the current working directory instead of trying to install it. The default value of `localpip` can be changed in `Makefile`; look for the line `localpip ?= F`.
+Try passing `make` the `localpip=T` flag, as in `make localpip=T main`. This will download and run `mkauthlist` in the current working directory instead of trying to install it. The default value of `localpip` can be changed in `Makefile`; look for the line `localpip ?= F`.
 
 ## Using Overleaf
 
@@ -53,12 +53,14 @@ Try passing `make` the `localpip=T` flag, as in `make localpip=T main`. This wil
 * Follow [these instructions](https://www.overleaf.com/help/230-how-do-i-push-a-new-project-to-overleaf-via-git) to push your project to a new Overleaf directory. (Note: you will probably want to use `git pull -s ours` to resolve conflicts in `main.tex`.)
 * Write on Overleaf!
 
+The code below shows how to do this (you will of course need to change the names "doc" and "4551529zqsdhy" appropriately).
+
 ```
 # Deploy the start_paper template into a directory called "doc"
 wget https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash
 bash ./deploy_from_github_zip.bash doc
 
-# Need desc-tex to be public for this to work
+# Deploy desc-tex into "doc"
 bash ./deploy_from_github_zip.bash doc/desc-tex LSSTDESC/desc-tex master
 
 cd doc
