@@ -4,6 +4,8 @@
 
 `start_paper` is intended to make the process of starting to write a DESC paper or note, and later transforming notes into papers, as simple as possible. `start_paper` attempts to play well with [`desc-tex`](https://github.com/LSSTDESC/desc-tex), a repository of latex support files for DESC papers, and [`mkauthlist`](https://github.com/kadrlica/mkauthlist), a Python package for generating author and contribution lists in latex format.
 
+Please submit issues or feature requests to the [issues](https://github.com/LSSTDESC/start_paper/issues). However, please also note that `start_paper` and `desc-tex` are now separate projects, and that `desc-tex` related items (including anything to do with the DESC Note class) belong in the [`desc-tex` issues](https://github.com/LSSTDESC/desc-tex/issues). Thank you.
+
 ## Starting your paper
 
 Download the contents of the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy) of the `start_paper` repository. We recommend downloading it as a ZIP file rather than cloning the repository; this simplifies the process of versioning your paper in its own repository, if you so desire. You can either do this manually by clicking "Clone or download" and then "Download ZIP" in GitHub (*while looking at the [`deploy` branch](https://github.com/LSSTDESC/start_paper/tree/deploy)*), or automatically by [downloading](https://raw.githubusercontent.com/LSSTDESC/start_paper/master/deploy_from_github_zip.bash) and running [this BASH script](https://github.com/LSSTDESC/start_paper/blob/master/deploy_from_github_zip.bash), as in
