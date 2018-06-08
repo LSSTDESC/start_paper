@@ -33,9 +33,9 @@ mastyle = $(style)
 endif
 
 DESCTEX := desc-tex
-DESCTEXORIGIN := git@github.com:LSSTDESC/desc-tex.git
+DESCTEXORIGIN := https://github.com/LSSTDESC/desc-tex.git
 LSSTTEX := lsst-texmf
-LSSTTEXORIGIN := git@github.com:lsst/lsst-texmf.git
+LSSTTEXORIGIN := https://github.com/lsst/lsst-texmf.git
 
 localpip ?= F
 PIPOPTS = --upgrade-strategy only-if-needed
