@@ -27,6 +27,16 @@ At present, only latex documents require/benefit from the Makefile. `make main` 
 
 Note that all non-latex formats, and latex with the Note class, point to a DESC header logo that is distributed with [`desc-tex`](https://github.com/LSSTDESC/desc-tex). If you see a missing image error at the top of your Markdown file, for example, you need to `make desc-tex` to download the logo file.
 
+### Troubleshooting 
+
+If you have not configured your GitHub account to use ssh keys, then attempting to run `make main` will trigger an error message such as 
+
+```Error: Permission denied (publickey)```
+
+To resolve this issue, follow the instructions laid [here](https://help.github.com/articles/error-permission-denied-publickey). 
+
+
+
 ## Updating `start_paper` content
 
 From time to time, there may be updates to the latex support files provided by [`desc-tex`](https://github.com/LSSTDESC/desc-tex), or the `start_paper` templates or Makefile.
@@ -123,3 +133,4 @@ People developing this project:
 * Jonathan Sick [(@jonathansick)](https://github.com/jonathansick)
 
 This is open source software, available under the BSD license. If you are interested in this project, please do drop us a line via the hyperlinked contact names above, or by [writing us an issue](https://github.com/DarkEnergyScienceCollaboration/start_paper/issues).
+
