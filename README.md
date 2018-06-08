@@ -23,9 +23,8 @@ For tips on writing papers in each of these formats, see the corresponding `exam
 
 ## Building your paper
 
-At present, only latex documents require/benefit from the Makefile. `make main` compiles the latex template, and `make` or `make help` will display the options. See also "Detailed `make` usage", below.
+At present, only latex documents require/benefit from the Makefile. `make` or `make help` will display basic options; more detailed documentation on using the Makefile and on writing papers/notes in latex and other formats will be provided in another document (started, appropriately enough, with `start_paper`).
 
-Note that all non-latex formats, and latex with the Note class, point to a DESC header logo that is distributed with [`desc-tex`](https://github.com/LSSTDESC/desc-tex). If you see a missing image error at the top of your Markdown file, for example, you need to `make desc-tex` to download the logo file.
 
 ## Updating `start_paper` content
 
