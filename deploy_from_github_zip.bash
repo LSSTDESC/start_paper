@@ -28,4 +28,4 @@ wget -O $tmpdir/$zipfile $url && \
     mkdir -p $wd/$project && \
     mv -v $dir/* $wd/$project/ && \
     cd $wd && \
-    rmdir $tmpdir
+    rm -rf $tmpdir
